@@ -23,4 +23,8 @@ class TransactionsRepoTest < Minitest::Test
     assert_equal 5,trans_repo.invoice_id(4)
   end
 
+  def test_it_finds_all
+    
+  end
+
 end

@@ -1,6 +1,6 @@
 require 'csv'
 
-class TransactionsRepo
+class TransactionsRepo 
 
   attr_reader :data
 
@@ -23,6 +23,10 @@ class TransactionsRepo
     end
     #then find its invoice_id
     line[:invoice_id]
+  end
+
+  def all
+    [5,2]
   end
 
 end
