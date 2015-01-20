@@ -1,2 +1,2 @@
-class Customesrs
+class Customers
 end
