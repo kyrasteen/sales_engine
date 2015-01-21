@@ -1,7 +1,8 @@
 require 'csv'
+require_relative 'repository'
 require "pry"
 
-class TransactionsRepo
+class TransactionsRepo < Repository
   attr_reader :filename, :data
 
   def initialize(filename)
@@ -16,9 +17,9 @@ class TransactionsRepo
     end
   end
 
-  def all
-    data
-  end
+  # def all
+  #   data
+  # end
 
   def random
     record = rand(0..data.length)
