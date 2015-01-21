@@ -6,14 +6,14 @@ class TransactionsRepo
 
   def initialize(filename)
     @filename = filename
+    @data = load_data
   end
 
   def load_data
     rows = CSV.read(filename, headers:true, header_converters: :symbol)
-    @data = rows.map do |row|
+    rows.map do |row|
       row
-      end
-    data
+    end
   end
 
   def all
