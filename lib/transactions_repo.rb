@@ -1,32 +1,38 @@
 require 'csv'
+require "pry"
 
 class TransactionsRepo 
+  attr_reader :filename, :data 
 
-  attr_reader :data
-
-  def initialize
-    @data = []
+  def initialize(filename)
+    @filename = filename
   end
 
-  def load_file(path)
-    rows = CSV.open(path, headers:true, header_converters: :symbol)
-    @data = rows.select do |row|
-        row
+  def load_data
+    rows = CSV.open(filename, headers:true, header_converters: :symbol)
+    @data = rows.map do |row|
+      row 
       end
-      data
-  end
-
-  def invoice_id(row_id)
-    #travel to row of row_id passed in
-    line = data.select do |row|
-      row[:id] == row_id
-    end
-    #then find its invoice_id
-    line[:invoice_id]
+    data
   end
 
   def all
-    [5,2]
+    data
   end
+
+  def random
+    record = rand(0..data.length)
+    data[record]
+  end
+
+  def find_by_id(id)
+    find_by_attribute(:id, id)
+  end
+
+  def find_by_attribute(attribute,criteria )
+    data.find_all { |datum| datum.to_s.downcase == criteria.to_s.downcase }
+  end
+
+
 
 end
