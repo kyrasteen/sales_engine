@@ -6,6 +6,6 @@ class MerchantsRepo
     CSV.read(filename, headers:true, header_converters: :symbol)
   end
 
-  def
+
 
 end
