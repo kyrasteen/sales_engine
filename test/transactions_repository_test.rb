@@ -1,17 +1,17 @@
 require 'minitest/autorun'
-# require 'minitest/pride'
-require '../lib/transactions_repo'
+require 'minitest/pride'
+require './lib/transactions_repo'
 require 'pry'
 
 class TransactionsRepoTest < Minitest::Test
   attr_reader :trans_repo
 
   def setup
-    @trans_repo = TransactionsRepo.new('../fixtures/transactions_test_data.csv')
+    @trans_repo = TransactionsRepo.new('./fixtures/transactions_test_data.csv')
   end
 
   def test_array_is_created_when_file_loads
-    assert trans_repo.load_data.is_a?(Array) 
+    assert trans_repo.load_data.is_a?(Array)
   end
 
   def test_file_has_19_records
@@ -26,9 +26,7 @@ class TransactionsRepoTest < Minitest::Test
 
   def test_can_find_an_id_number
     trans_repo.load_data
-    assert_equal 5,trans_repo.find_by_id(4)
+    assert_equal "5",trans_repo.find_by_id(4)[:invoice_id]
   end
-
-
 
 end

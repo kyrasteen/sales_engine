@@ -1,17 +1,17 @@
 require 'csv'
 require "pry"
 
-class TransactionsRepo 
-  attr_reader :filename, :data 
+class TransactionsRepo
+  attr_reader :filename, :data
 
   def initialize(filename)
     @filename = filename
   end
 
   def load_data
-    rows = CSV.open(filename, headers:true, header_converters: :symbol)
+    rows = CSV.read(filename, headers:true, header_converters: :symbol)
     @data = rows.map do |row|
-      row 
+      row
       end
     data
   end
@@ -29,10 +29,12 @@ class TransactionsRepo
     find_by_attribute(:id, id)
   end
 
-  def find_by_attribute(attribute,criteria )
-    data.find_all { |datum| datum.to_s.downcase == criteria.to_s.downcase }
+  def find_by_attribute(attribute,criteria)
+    data.each_with_index do |row, index|
+      if row[attribute] == criteria.to_s
+        return data[index]
+      end
+    end
   end
-
-
 
 end
