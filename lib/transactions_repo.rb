@@ -2,7 +2,7 @@ require 'csv'
 require_relative 'repository'
 require "pry"
 
-class TransactionsRepo < Repository
+class TransactionsRepo 
   attr_reader :filename, :data
 
   def initialize(filename)
