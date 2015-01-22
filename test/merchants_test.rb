@@ -30,6 +30,6 @@ class MerchantIntegrationTest < Minitest::Test
 
     invoices = Array.new(5){Invoice.new}
     merchant_repo.invoices = invoices
-    assert_eqaul invoices, merchant.invoices
+    assert_equal invoices, merchant.invoices
   end
 end

@@ -21,10 +21,6 @@ class MerchantsRepoTest < Minitest::Test
     assert_equal 2, @merch.find_all_by_id(5).count
   end
 
-  def test_it_can_find_by_id
-    assert_equal "12", @merch.find_by_name('Kozey Group').id.to_s
-  end
-
   def test_it_can_find_by_created_at
     assert_equal "2012-03-27 14:54:00 UTC", @merch.find_by_created_at('2012-03-27 14:54:00 UTC').created_at
   end
