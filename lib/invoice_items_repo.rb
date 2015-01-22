@@ -43,6 +43,31 @@ class InvoiceItemsRepo
     find_all_by_attribute(:updated_at, time)
   end
 
+  def find_by_invoice_id(invoice_id)
+    find_by_attribute(:invoice_id, invoice_id)
+  end
+
+  def find_all_by_invoice_id(invoice_id)
+    find_all_by_attribute(:invoice_id, invoice_id)
+  end
+
+  def find_by_quantity(quantity)
+    find_by_attribute(:quantity, quantity.to_s)
+  end
+
+  def find_all_by_quantity(quantity)
+    find_all_by_attribute(:quantity, quantity.to_s)
+  end
+
+  def find_by_unit_price(price)
+    find_by_attribute(:unit_price, price.to_s)
+  end
+
+  def find_all_by_unit_price(price)
+    find_all_by_attribute(:unit_price, price.to_s)
+  end
+
+
   private
   def find_by_attribute(attribute,criteria)
     data.each_with_index do |row, index|
