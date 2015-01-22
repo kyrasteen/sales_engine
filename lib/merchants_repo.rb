@@ -43,6 +43,15 @@ class MerchantsRepo
     find_all_by_attribute(:created_at, time)
   end
 
+  def find_by_updated_at(time)
+    find_by_attribute(:updated_at, time)
+  end
+
+  def find_all_by_updated_at(time)
+     find_all_by_attribute(:updated_at, time)
+  end
+
+private
   def find_by_attribute(attribute,criteria)
     data.each_with_index do |row, index|
       if row.send(attribute) == criteria
@@ -54,7 +63,6 @@ class MerchantsRepo
   def find_all_by_attribute(attribute, criteria)
     all_found = []
     data.each_with_index do |row, index|
-      # require 'pry'; binding.pry
       if row.send(attribute) == criteria
         all_found << data[index]
       end

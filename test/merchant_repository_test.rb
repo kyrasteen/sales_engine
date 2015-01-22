@@ -29,6 +29,12 @@ class MerchantsRepoTest < Minitest::Test
     assert_equal "12", merch.find_by_name('Kozey Group').id.to_s
   end
 
+  def test_it_can_find_by_name
+    filename = './test/support/merchants_test_data.csv'
+    merch = MerchantsRepo.new(filename)
+    assert_equal 'Williamson Group', merch.find_by_name('Williamson Group').name
+  end
+
   def test_it_can_find_all_by_name
     filename = './test/support/merchants_test_data.csv'
     merch = MerchantsRepo.new(filename)
@@ -38,27 +44,25 @@ class MerchantsRepoTest < Minitest::Test
   def test_it_can_find_by_created_at
     filename = './test/support/merchants_test_data.csv'
     merch = MerchantsRepo.new(filename)
-    assert_equal "12", merch.find_by_created_at('Kozey Group').id.to_s
+    assert_equal "2012-03-27 14:54:00 UTC", merch.find_by_created_at('2012-03-27 14:54:00 UTC').created_at
   end
 
-  def test_it_can_find_by_created_at
+  def test_it_can_find_all_by_created_at
     filename = './test/support/merchants_test_data.csv'
     merch = MerchantsRepo.new(filename)
-    assert_equal 2, merch.find_all_by_created_at('Williamson Group').count
+    assert_equal 9, merch.find_all_by_created_at('2012-03-27 14:53:59 UTC').count
   end
 
-  def test_it_can_find_by_updated_at
-    skip
+  def test_it_can_find_by_updated_at    
     filename = './test/support/merchants_test_data.csv'
     merch = MerchantsRepo.new(filename)
-    assert_equal "12", merch.find_by_updated_at('Kozey Group').id.to_s
+    assert_equal "2012-03-27 14:54:00 UTC", merch.find_by_updated_at('2012-03-27 14:54:00 UTC').updated_at
   end
 
-  def test_it_can_find_by_updated_at
-    skip
+  def test_it_can_find_all_by_updated_at
     filename = './test/support/merchants_test_data.csv'
     merch = MerchantsRepo.new(filename)
-    assert_equal 2, merch.find_all_by_updated_at('Williamson Group').count
+    assert_equal 10, merch.find_all_by_updated_at('2012-03-27 14:54:00 UTC').count
   end
 
 
