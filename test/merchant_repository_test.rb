@@ -29,18 +29,6 @@ class MerchantsRepoTest < Minitest::Test
     assert_equal "12", merch.find_by_name('Kozey Group').id.to_s
   end
 
-  def test_it_can_find_by_name
-    filename = './test/support/merchants_test_data.csv'
-    merch = MerchantsRepo.new(filename)
-    assert_equal 'Williamson Group', merch.find_by_name('Williamson Group').name
-  end
-
-  def test_it_can_find_all_by_name
-    filename = './test/support/merchants_test_data.csv'
-    merch = MerchantsRepo.new(filename)
-    assert_equal 2, merch.find_all_by_name('Williamson Group').count
-  end
-
   def test_it_can_find_by_created_at
     filename = './test/support/merchants_test_data.csv'
     merch = MerchantsRepo.new(filename)
@@ -65,7 +53,17 @@ class MerchantsRepoTest < Minitest::Test
     assert_equal 10, merch.find_all_by_updated_at('2012-03-27 14:54:00 UTC').count
   end
 
+  def test_it_can_find_by_name
+    filename = './test/support/merchants_test_data.csv'
+    merch = MerchantsRepo.new(filename)
+    assert_equal 'Williamson Group', merch.find_by_name('Williamson Group').name
+  end
 
+  def test_it_can_find_all_by_name
+    filename = './test/support/merchants_test_data.csv'
+    merch = MerchantsRepo.new(filename)
+    assert_equal 2, merch.find_all_by_name('Williamson Group').count
+  end
 
 end
 

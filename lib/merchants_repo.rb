@@ -27,14 +27,6 @@ class MerchantsRepo
     find_all_by_attribute(:id, id)
   end
 
-  def find_by_name(name)
-    find_by_attribute(:name, name)
-  end
-
-  def find_all_by_name(name)
-    find_all_by_attribute(:name, name)
-  end
-
   def find_by_created_at(time)
     find_by_attribute(:created_at, time)
   end
@@ -50,6 +42,15 @@ class MerchantsRepo
   def find_all_by_updated_at(time)
      find_all_by_attribute(:updated_at, time)
   end
+
+   def find_by_name(name)
+    find_by_attribute(:name, name)
+  end
+
+  def find_all_by_name(name)
+    find_all_by_attribute(:name, name)
+  end
+
 
 private
   def find_by_attribute(attribute,criteria)
