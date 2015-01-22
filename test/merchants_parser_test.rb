@@ -5,7 +5,7 @@ require_relative '../lib/merchants_parser'
 
 class MerchantsParserTest < Minitest::Test
   def test_it_parses_a_csv_of_data
-    filename = "./fixtures/merchants_test_data.csv"
+    filename = "test/support/merchants_test_data.csv"
     m_parser = MerchantsParser.new(filename)
     merchants = m_parser.parse
 

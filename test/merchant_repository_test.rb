@@ -23,12 +23,6 @@ class MerchantsRepoTest < Minitest::Test
     assert_equal 2, merch.find_all_by_id(5).count
   end
 
-  def test_it_can_find_by_id
-    filename = './test/support/merchants_test_data.csv'
-    merch = MerchantsRepo.new(filename)
-    assert_equal "12", merch.find_by_name('Kozey Group').id.to_s
-  end
-
   def test_it_can_find_by_created_at
     filename = './test/support/merchants_test_data.csv'
     merch = MerchantsRepo.new(filename)
