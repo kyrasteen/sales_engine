@@ -10,13 +10,6 @@ class TransactionsRepo
     @data = load_data
   end
 
-  def load_data
-    rows = CSV.read(filename, headers:true, header_converters: :symbol)
-    rows.map do |row|
-      row
-    end
-  end
-
   def all
     data
   end
