@@ -47,16 +47,3 @@ class MerchantsRepoTest < Minitest::Test
 
 end
 
-#
-# class MerchantRepoIntegrationTest < Minitest::Test
-#
-#   def test_repo_stores_data
-#     m_parser = MerchantsParser.new(filename)
-#     data = m_parser.parse
-#     merch = MerchantsRepo.new
-#     assert_equal 19, merch.data.count
-#   end
-#
-# end
-#
-# # './test/support/merchants_test_data.csv'

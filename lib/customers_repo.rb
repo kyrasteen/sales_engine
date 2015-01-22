@@ -58,8 +58,6 @@ class CustomersRepo
     find_all_by_attribute(:last_name, last_name)
   end
 
-
-
   private
   def find_by_attribute(attribute,criteria)
     data.each_with_index do |row, index|

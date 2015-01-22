@@ -9,4 +9,7 @@ class Customers
     @updated_at = data[:updated_at]
   end
 
+  # def invoice
+  # end
+
 end
