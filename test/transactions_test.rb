@@ -4,6 +4,7 @@ require_relative '../lib/transactions_parser'
 # require_relative '../lib/invoice'
 
 class TransactionsTest < Minitest::Test
+
   def test_it_stores_an_id
     transactions = Transactions.new({:id => 6}, nil)
     assert_equal 6, transactions.id
@@ -42,8 +43,3 @@ end
 #     assert_equal invoices, @merchant.invoices
 #   end
 # end
-
-
-
-
-
