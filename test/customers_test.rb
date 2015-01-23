@@ -28,14 +28,14 @@ class CustomersTest < Minitest::Test
 end
 
 class CustomerIntegrationTest < Minitest::Test
+  require_relative "../lib/customers_parser"
+  require_relative "../lib/invoices"
 
-  def test_it_finds_related_invoices
-    data =  { id:1 }
-    customers_repo = CustomersRepo.new(data, nil)
-    customers = Customers.new(data, customers_repo)
+  def test_customers_can_access_invoices
+    data = { id: 1}
+    customers = Customers.new(data, nil)
+    invoices = Array.new(5){Invoices.new(data, )}
 
-    invoices = Array.new(5){Invoices.new}
-    customers.invoices = invoices
     assert_equal invoices, customers.invoices
   end
 end
