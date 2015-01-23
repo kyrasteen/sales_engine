@@ -3,11 +3,12 @@ require_relative 'merchants_parser'
 
 class MerchantsRepo
 
-  attr_reader :invoices, :data, :merchants_parser
+  attr_reader :invoices, :data, :merchants_parser, :merchants
 
   def initialize(filename, se_self)
     @merchants_parser = MerchantsParser.new(filename, se_self)
     @data = merchants_parser.parse
+    @merchants = merchants_parser.merchants
   end
 
   def all
