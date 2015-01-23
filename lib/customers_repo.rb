@@ -4,8 +4,8 @@ require_relative 'customers_parser'
 class CustomersRepo
   attr_reader :data, :customers_parser
 
-  def initialize(filename)
-    @customers_parser = CustomersParser.new(filename)
+  def initialize(filename, se_self)
+    @customers_parser = CustomersParser.new(filename, se_self)
     @data = customers_parser.parse
   end
 

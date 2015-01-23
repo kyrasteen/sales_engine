@@ -5,8 +5,8 @@ class InvoiceItemsRepo
 
   attr_reader :invoices, :data, :invoice_items_parser
 
-  def initialize(filename)
-    @invoice_items_parser = InvoiceItemsParser.new(filename)
+  def initialize(filename, se_self)
+    @invoice_items_parser = InvoiceItemsParser.new(filename, se_self)
     @data = invoice_items_parser.parse
   end
 

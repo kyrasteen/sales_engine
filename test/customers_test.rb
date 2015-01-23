@@ -31,11 +31,11 @@ class CustomerIntegrationTest < Minitest::Test
 
   def test_it_finds_related_invoices
     data =  { id:1 }
-    customers_repo = CustomersRepo.new(data)
+    customers_repo = CustomersRepo.new(data, nil)
     customers = Customers.new(data, customers_repo)
 
     invoices = Array.new(5){Invoices.new}
-    customers_repo.invoices = invoices
+    customers.invoices = invoices
     assert_equal invoices, customers.invoices
   end
 end

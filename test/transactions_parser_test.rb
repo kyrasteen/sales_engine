@@ -6,7 +6,7 @@ require_relative '../lib/transactions_parser'
 class TransactionsParserTest < Minitest::Test
   def test_it_parses_a_csv_of_data
     filename = "test/support/transactions_test_data.csv"
-    t_parser = TransactionsParser.new(filename)
+    t_parser = TransactionsParser.new(filename, nil)
     transactions = t_parser.parse
 
     first = transactions.first

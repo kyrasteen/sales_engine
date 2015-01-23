@@ -5,8 +5,8 @@ class InvoicesRepo
 
   attr_reader :data, :invoices_parser
 
-  def initialize(filename)
-    @invoices_parser = InvoicesParser.new(filename)
+  def initialize(filename, se_self)
+    @invoices_parser = InvoicesParser.new(filename, se_self)
     @data = invoices_parser.parse
   end
 
@@ -67,7 +67,7 @@ class InvoicesRepo
     find_all_by_attribute(:status, status)
   end
 
-   
+
 
 private
   def find_by_attribute(attribute,criteria)
