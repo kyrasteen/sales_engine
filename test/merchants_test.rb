@@ -4,6 +4,11 @@ require_relative '../lib/merchants'
 
 class MerchantsTest < Minitest::Test
 
+  def setup
+    engine = SalesEngine.new
+    @merchant = engine.merchants_repository('test/support/merchants_test_data.csv').merchants[0]
+  end
+
   def test_it_stores_an_id
     merchant = Merchants.new({id:1}, nil)
     assert_equal 1, merchant.id
@@ -19,17 +24,14 @@ class MerchantsTest < Minitest::Test
     assert_equal "kyra", merchant.name
   end
 
-end
-
-class MerchantIntegrationTest < Minitest::Test
-
-  def test_it_finds_related_orders
-    merchant_repo = MerchantRepo.new
-    data = {name:"my shop"}
-    merchant = Merchants.new(data, merchant_repo)
-
-    invoices = Array.new(5){Invoice.new}
-    merchant.invoices = invoices
-    assert_equal invoices, merchant.invoices
+  def test_it_finds_related_items
+    assert @merchant.id
+    assert_equal 1, @merchant.id
   end
+
+  def test_it_finds_related_invoices
+    assert @merchant.id
+    assert_equal 1, @merchant.id
+  end
+
 end

@@ -1,9 +1,16 @@
 require 'minitest/autorun'
 require_relative '../lib/transactions'
 require_relative '../lib/transactions_parser'
-# require_relative '../lib/invoice'
+require_relative '../lib/sales_engine'
 
 class TransactionsTest < Minitest::Test
+
+  attr_reader :transaction
+
+  def setup
+    engine = SalesEngine.new
+    @transaction = engine.transactions_repository('test/support/transactions_test_data.csv').transactions[0]
+  end
 
   def test_it_stores_an_id
     transactions = Transactions.new({:id => 6}, nil)
@@ -19,27 +26,9 @@ class TransactionsTest < Minitest::Test
     transactions = Transactions.new({:credit_card_number => '12345'}, nil)
     assert_equal "12345", transactions.credit_card_number
   end
+
+  def test_it_finds_related_invoices
+    assert @transaction.invoice_id
+    assert_equal '1', @transaction.invoice_id
+  end
 end
-
-# class FakeMerchantRepository
-#   attr_accessor :invoices
-
-#   def find_invoices_by_merchant_id(id)
-#     @invoices
-#   end
-# end
-
-
-#this is where we test the bridge to invoices
-# class MerchantIntegrationTest < Minitest::Test
-#   def test_it_finds_related_invoice
-#     @merchant_repo = FakeMerchantRepository.new
-#     data = {:name => "My Shop"}
-#     @merchant = Merchant.new(data, @merchant_repo)
-
-#     invoices = Array.new(5){ Invoice.new }
-#     @merchant_repo.invoices = invoices
-
-#     assert_equal invoices, @merchant.invoices
-#   end
-# end
