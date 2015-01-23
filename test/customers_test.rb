@@ -32,10 +32,12 @@ class CustomerIntegrationTest < Minitest::Test
   require_relative "../lib/invoices"
 
   def test_customers_can_access_invoices
-    data = { id: 1}
+    data = { id:1 } 
+    customers_repo = CustomersRepo.new(data, nil)
     customers = Customers.new(data, nil)
-    invoices = Array.new(5){Invoices.new(data, )}
+    invoice_array = Array.new(5){Invoices.new}
 
-    assert_equal invoices, customers.invoices
+    customers.invoices = invoice_array
+    assert_equal invoice_array, customers.invoices
   end
 end

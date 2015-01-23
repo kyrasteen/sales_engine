@@ -2,11 +2,12 @@ require 'csv'
 require_relative 'transactions_parser'
 
 class TransactionsRepo
-  attr_reader :data, :transactions_parser
+  attr_reader :data, :transactions_parser, :transactions
 
   def initialize(filename, se_self)
     @transactions_parser = TransactionsParser.new(filename, se_self)
     @data = transactions_parser.parse
+    @transactions = transactions_parser.transactions
   end
 
   def all
