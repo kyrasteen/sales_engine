@@ -6,7 +6,7 @@ require_relative '../lib/invoices_parser'
 class InvoicesParserTest < Minitest::Test
   def test_it_parses_a_csv_of_data
     filename = "test/support/invoices_test_data.csv"
-    invoices_parser = InvoicesParser.new(filename)
+    invoices_parser = InvoicesParser.new(filename, nil)
     invoices = invoices_parser.parse
 
     first = invoices.first

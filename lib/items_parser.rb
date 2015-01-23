@@ -3,16 +3,17 @@ require_relative 'items'
 
 class ItemsParser
 
-  attr_reader :filename
+  attr_reader :filename, :se_self
 
-  def initialize(filename)
+  def initialize(filename, se_self)
     @filename = filename
+    @se_self = se_self
   end
 
   def parse
     file = CSV.open(filename, :headers => true, :header_converters => :symbol)
     file.map do |line|
-      Items.new(line, nil)
+      Items.new(line, se_self)
     end
   end
 

@@ -7,7 +7,7 @@ class CustomersRepoTest < Minitest::Test
 
   def setup
     filename = ('./test/support/customers_test_data.csv')
-    @customers = CustomersRepo.new(filename)
+    @customers = CustomersRepo.new(filename, nil)
   end
 
   def test_it_finds_all

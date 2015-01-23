@@ -6,7 +6,7 @@ class MerchantsRepoTest < Minitest::Test
 
   def setup
     filename = './test/support/merchants_test_data.csv'
-    @merch = MerchantsRepo.new(filename)
+    @merch = MerchantsRepo.new(filename, nil)
   end
 
   def test_it_finds_all
@@ -46,4 +46,3 @@ class MerchantsRepoTest < Minitest::Test
   end
 
 end
-

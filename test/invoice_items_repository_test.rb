@@ -6,7 +6,7 @@ class InvoiceItemsRepoTest < Minitest::Test
 
   def setup
     filename = './test/support/invoice_items_test_data.csv'
-    @invoice_items = InvoiceItemsRepo.new(filename)
+    @invoice_items = InvoiceItemsRepo.new(filename, nil)
   end
 
   def test_it_finds_all

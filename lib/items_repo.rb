@@ -2,10 +2,10 @@ require 'csv'
 require_relative 'items_parser'
 
 class ItemsRepo
-  attr_reader :data, :items_parser 
+  attr_reader :data, :items_parser
 
-  def initialize(filename)
-    @items_parser = ItemsParser.new(filename)
+  def initialize(filename, se_self)
+    @items_parser = ItemsParser.new(filename, se_self)
     @data = items_parser.parse
   end
 

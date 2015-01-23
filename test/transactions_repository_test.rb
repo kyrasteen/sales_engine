@@ -7,7 +7,7 @@ class TransactionsRepoTest < Minitest::Test
 
   def setup
     filename = ('./test/support/transactions_test_data.csv')
-    @transactions = TransactionsRepo.new(filename)
+    @transactions = TransactionsRepo.new(filename, nil)
   end
 
   def test_it_finds_all
