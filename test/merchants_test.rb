@@ -6,7 +6,7 @@ class MerchantsTest < Minitest::Test
 
   def setup
     engine = SalesEngine.new
-    @merchant = engine.merchants_repository('test/support/merchants_test_data.csv').merchants[0]
+    @merchant = engine.merchants_repository('test/support/merchants_test_data.csv').data[0]
   end
 
   def test_it_stores_an_id

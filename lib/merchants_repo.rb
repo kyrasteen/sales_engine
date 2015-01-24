@@ -3,21 +3,27 @@ require_relative 'merchants_parser'
 
 class MerchantsRepo
 
-  attr_reader :invoices, :data, :merchants_parser, :merchants
+  attr_reader :data, :filename
 
   def initialize(filename, se_self)
-    @merchants_parser = MerchantsParser.new(filename, self)
+    @filename = filename
     @data = merchants_parser.parse
-    @merchants = merchants_parser.merchants
+  end
+
+  def merchants_parser
+    @merchants_parser ||= MerchantsParser.new(filename, self)
   end
 
   def all
     data
   end
 
+  def find_random
+    rand(0..data.length)
+  end
+
   def random
-    record = rand(0..data.length)
-    data[record]
+    data[find_random]
   end
 
   def find_by_id(id)
@@ -52,25 +58,14 @@ class MerchantsRepo
     find_all_by_attribute(:name, name)
   end
 
-
 private
+
   def find_by_attribute(attribute,criteria)
-    data.each_with_index do |row, index|
-      if row.send(attribute) == criteria
-        return data[index]
-      end
-    end
+    data.find { |row| row.send(attribute) == criteria }
   end
 
   def find_all_by_attribute(attribute, criteria)
-    all_found = []
-    data.each_with_index do |row, index|
-      if row.send(attribute) == criteria
-        all_found << data[index]
-      end
-    end
-    all_found
+    data.find_all { |row| row.send(attribute) == criteria }
   end
-
 
 end

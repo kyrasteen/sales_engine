@@ -3,11 +3,10 @@ require_relative 'invoice_items_parser'
 
 class InvoiceItemsRepo
 
-  attr_reader :invoices, :data, :filename, :sales_engine
+  attr_reader :data, :filename
 
   def initialize(filename, sales_engine)
     @filename = filename
-    @sales_engine = sales_engine
     @data = invoice_items_parser.parse
   end
 
@@ -75,8 +74,8 @@ class InvoiceItemsRepo
     find_all_by_attribute(:unit_price, price.to_s)
   end
 
-
   private
+  
   def find_by_attribute(attribute,criteria)
     data.find { |row| row.send(attribute) == criteria }
   end

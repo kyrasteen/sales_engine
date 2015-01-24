@@ -3,11 +3,10 @@ require_relative 'invoices_parser'
 
 class InvoicesRepo
 
-  attr_reader :data, :filename, :sales_engine
+  attr_reader :data, :filename
 
   def initialize(filename, sales_engine)
     @filename = filename
-    @sales_engine = sales_engine
     @data = invoices_parser.parse
   end
 
@@ -75,22 +74,14 @@ class InvoicesRepo
     find_all_by_attribute(:status, status)
   end
 
-
-
 private
+
   def find_by_attribute(attribute,criteria)
-    data.find  { |row| row.send(attribute) == criteria }
+    data.find { |row| row.send(attribute) == criteria }
   end
 
   def find_all_by_attribute(attribute, criteria)
-    all_found = []
-    data.each_with_index do |row, index|
-      if row.send(attribute) == criteria
-        all_found << data[index]
-      end
-    end
-    all_found
+    data.find_all { |row| row.send(attribute) == criteria }
   end
-
 
 end
