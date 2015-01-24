@@ -12,7 +12,7 @@ class Invoices
   end
 
   def transactions
-    invoice_repo_self. 
+    invoice_repo_self.find_all_by_id(id) 
   end
 
   # def invoice_items
