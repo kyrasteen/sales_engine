@@ -2,12 +2,13 @@ require 'csv'
 require_relative 'items_parser'
 
 class ItemsRepo
-  
-  attr_reader :data, :filename
+
+  attr_reader :data, :filename, :se_self
 
   def initialize(filename, se_self)
     @filename = filename
     @data = items_parser.parse
+    @se_self = se_self
   end
 
   def items_parser
@@ -80,6 +81,14 @@ class ItemsRepo
 
   def find_all_by_merchant_id(merchant_id)
     find_all_by_attribute(:merchant_id, merchant_id)
+  end
+
+  def find_invoice_items(id)
+    se_self.invoice_items_repository.find_all_by_item_id(id)
+  end
+
+  def find_merchant(merchant_id)
+    se_self.merchants_repository.find_all_by_id(merchant_id)
   end
 
   private
