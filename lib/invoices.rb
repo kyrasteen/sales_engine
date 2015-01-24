@@ -1,7 +1,7 @@
 class Invoices
   attr_reader :id, :customer_id, :merchant_id, :status, :created_at, :updated_at
 
-  def initialize(line, my_parent)
+  def initialize(line, mr_self)
     @id = line[:id].to_i
     @customer_id = line[:customer_id]
     @merchant_id = line[:merchant_id]
