@@ -79,11 +79,7 @@ class InvoicesRepo
 
 private
   def find_by_attribute(attribute,criteria)
-    data.find do |row|
-      if row.send(attribute) == criteria
-        return data[index]
-      end
-    end
+    data.find  { |row| row.send(attribute) == criteria }
   end
 
   def find_all_by_attribute(attribute, criteria)
