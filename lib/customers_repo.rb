@@ -11,7 +11,7 @@ class CustomersRepo
   end
 
   def customers_parser
-    @customers_parser ||= CustomersParser.new(filename, sales_engine)
+    @customers_parser ||= CustomersParser.new(filename, self)
   end
 
   def all
