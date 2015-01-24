@@ -5,7 +5,7 @@ class TransactionsRepo
   attr_reader :data, :transactions_parser, :transactions
 
   def initialize(filename, se_self)
-    @transactions_parser = TransactionsParser.new(filename, se_self)
+    @transactions_parser = TransactionsParser.new(filename, self)
     @data = transactions_parser.parse
     @transactions = transactions_parser.transactions
   end

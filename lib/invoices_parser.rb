@@ -5,7 +5,7 @@ class InvoicesParser
 
   attr_reader :filename, :mr_self
 
-  def initialize(filename, :mr_self)
+  def initialize(filename, mr_self)
     @filename = filename
     @mr_self = mr_self
   end
