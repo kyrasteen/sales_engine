@@ -1,6 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require_relative '../lib/customers'
+require_relative '../lib/sales_engine'
 
 class CustomersTest < Minitest::Test
 
