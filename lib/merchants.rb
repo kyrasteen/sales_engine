@@ -13,11 +13,11 @@ class Merchants
   end
 
   def items
-    mr_self.find_items(id)
+    mr_self.find_items(id.to_s)
   end
 
   def invoices
-    mr_self.find_invoices(id)
+    mr_self.find_invoices(id.to_s)
   end
 
 end
