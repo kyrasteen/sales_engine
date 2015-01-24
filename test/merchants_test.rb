@@ -2,6 +2,7 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require_relative '../lib/sales_engine'
 require_relative '../lib/merchants_parser'
+require_relative '../lib/merchants'
 
 class MerchantsTest < Minitest::Test
 
@@ -23,13 +24,14 @@ class MerchantsTest < Minitest::Test
   end
 
   def test_it_finds_related_items
+    skip
     assert @merchant.items
-    assert_equal 1, @merchant.items
+    assert_equal 1, @merchant.items.length
   end
 
   def test_it_finds_related_invoices
     assert @merchant.invoices
-    assert_equal 1, @merchant.invoices
+    assert_equal 59, @merchant.invoices.length
   end
 
 end
