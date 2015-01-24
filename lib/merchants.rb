@@ -2,7 +2,7 @@ class Merchants
 
   attr_reader :id, :name, :created_at, :updated_at, :se_self
 
-  def initialize(line, se_self)
+  def initialize(line, mr_self)
     @id = line[:id].to_i
     @name = line[:name]
     @created_at = line[:created_at]
