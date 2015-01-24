@@ -5,7 +5,7 @@ class ItemsRepo
   attr_reader :data, :items_parser
 
   def initialize(filename, se_self)
-    @items_parser = ItemsParser.new(filename, se_self)
+    @items_parser = ItemsParser.new(filename, self)
     @data = items_parser.parse
   end
 
