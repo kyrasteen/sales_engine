@@ -1,11 +1,12 @@
 require 'csv'
-require_relative 'merchants_parser'
+require_relative 'sales_engine'
 
 class MerchantsRepo
 
-  attr_reader :data, :filename
+  attr_reader :data, :filename, :se_self
 
   def initialize(filename, se_self)
+    @se_self = se_self
     @filename = filename
     @data = merchants_parser.parse
   end
@@ -56,6 +57,14 @@ class MerchantsRepo
 
   def find_all_by_name(name)
     find_all_by_attribute(:name, name)
+  end
+
+  def find_items(merchant_id)
+    se_self.items_repository.find_all_by_merchant_id(merchant_id)
+  end
+
+  def find_invoices(merchant_id)
+    se_self.invoices_repository.find_all_by_merchant_id(merchant_id)
   end
 
 private

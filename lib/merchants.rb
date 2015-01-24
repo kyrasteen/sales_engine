@@ -1,3 +1,5 @@
+require_relative 'merchants_repo'
+
 class Merchants
 
   attr_reader :id, :name, :created_at, :updated_at, :mr_self
@@ -11,11 +13,11 @@ class Merchants
   end
 
   def items
-    mr_self.merchants_repository.find_all_by_id(id)
+    mr_self.find_items(id)
   end
 
   def invoices
-    mr_self.merchants_repository.find_all_by_id(id)
+    mr_self.find_invoices(id)
   end
 
 end
