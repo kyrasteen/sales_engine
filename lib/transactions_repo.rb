@@ -2,12 +2,13 @@ require 'csv'
 require_relative 'transactions_parser'
 
 class TransactionsRepo
-  
-  attr_reader :data, :filename
+
+  attr_reader :data, :filename, :se_self
 
   def initialize(filename, se_self)
     @filename = filename
     @data = transactions_parser.parse
+    @se_self = se_self
   end
 
   def transactions_parser
@@ -80,6 +81,10 @@ class TransactionsRepo
 
   def find_all_by_result(result)
     find_all_by_attribute(:result, result)
+  end
+
+  def find_invoices(id)
+    se_self.invoices_repository.find_all_by_id(id)
   end
 
   private

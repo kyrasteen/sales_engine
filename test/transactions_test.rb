@@ -1,6 +1,4 @@
 require 'minitest/autorun'
-require_relative '../lib/transactions'
-require_relative '../lib/transactions_parser'
 require_relative '../lib/sales_engine'
 
 class TransactionsTest < Minitest::Test
@@ -28,7 +26,8 @@ class TransactionsTest < Minitest::Test
   end
 
   def test_it_finds_related_invoices
-    assert @transaction.invoice_id
-    assert_equal '1', @transaction.invoice_id
+    assert @transaction.invoice
+    assert_equal 1, @transaction.invoice.length
   end
+
 end
