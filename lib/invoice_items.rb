@@ -2,7 +2,7 @@ class InvoiceItems
 
   attr_reader :id, :created_at, :updated_at, :item_id, :invoice_id, :quantity, :unit_price
 
-  def initialize(line, parent)
+  def initialize(line, mr_self)
     @id = line[:id].to_i
     @invoice_id = line[:invoice_id].to_i
     @item_id = line[:item_id].to_i
