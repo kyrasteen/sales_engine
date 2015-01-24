@@ -41,8 +41,4 @@ class SalesEngine
     @transactions_repository ||= TransactionsRepo.new(filename, self)
   end
 
-  def find_all_invoices_by_merchant_id(merchant_id)
-    invoices_repository.find_all_by_merchant_id(merchant_id)
-  end
-
 end

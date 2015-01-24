@@ -24,7 +24,6 @@ class MerchantsTest < Minitest::Test
   end
 
   def test_it_finds_related_items
-    skip
     assert @merchant.items
     assert_equal 1, @merchant.items.length
   end
