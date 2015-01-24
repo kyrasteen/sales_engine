@@ -9,7 +9,7 @@ class TransactionsTest < Minitest::Test
 
   def setup
     engine = SalesEngine.new
-    @transaction = engine.transactions_repository('test/support/transactions_test_data.csv').transactions[0]
+    @transaction = engine.transactions_repository('test/support/transactions_test_data.csv').data[0]
   end
 
   def test_it_stores_an_id

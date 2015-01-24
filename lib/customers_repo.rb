@@ -2,11 +2,11 @@ require 'csv'
 require_relative 'customers_parser'
 
 class CustomersRepo
-  attr_reader :data, :filename, :sales_engine
+  
+  attr_reader :data, :filename
 
   def initialize(filename, sales_engine)
     @filename = filename
-    @sales_engine = sales_engine
     @data = customers_parser.parse
   end
 
@@ -67,6 +67,7 @@ class CustomersRepo
   end
 
   private
+
   def find_by_attribute(attribute,criteria)
     data.find { |row| row.send(attribute) == criteria }
   end

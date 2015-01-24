@@ -5,7 +5,8 @@ require_relative '../lib/customers'
 class CustomersTest < Minitest::Test
 
   def setup
-    @engine = SalesEngine.new
+    engine = SalesEngine.new
+    @customer = engine.customers_repository('./test/support/customers_test_data.csv').data[0]
   end
 
   def test_it_stores_an_id
@@ -24,9 +25,8 @@ class CustomersTest < Minitest::Test
   end
 
   def test_it_can_find_an_invoice
-    customer = @engine.customers_repository('./test/support/customers_test_data.csv').data[0]
-    assert customer.invoices
-    assert_equal 1, customer.id
+    assert @customer.invoices
+    assert_equal 1, @customer.id
   end
 
 end

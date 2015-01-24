@@ -2,12 +2,16 @@ require 'csv'
 require_relative 'transactions_parser'
 
 class TransactionsRepo
-  attr_reader :data, :transactions_parser, :transactions
+  
+  attr_reader :data, :filename
 
   def initialize(filename, se_self)
-    @transactions_parser = TransactionsParser.new(filename, self)
+    @filename = filename
     @data = transactions_parser.parse
-    @transactions = transactions_parser.transactions
+  end
+
+  def transactions_parser
+    @transactions_parser ||= TransactionsParser.new(filename, self)
   end
 
   def all
@@ -15,8 +19,11 @@ class TransactionsRepo
   end
 
   def random
+    data[find_random]
+  end
+
+  def find_random
     record = rand(0..data.length)
-    data[record]
   end
 
   def find_by_id(id)
@@ -75,25 +82,14 @@ class TransactionsRepo
     find_all_by_attribute(:result, result)
   end
 
-
-
   private
+
   def find_by_attribute(attribute,criteria)
-    data.each_with_index do |row, index|
-      if row.send(attribute) == criteria
-        return data[index]
-      end
-    end
+    data.find { |row| row.send(attribute) == criteria }
   end
 
   def find_all_by_attribute(attribute, criteria)
-    all_found = []
-    data.each_with_index do |row, index|
-      if row.send(attribute) == criteria
-        all_found << data[index]
-      end
-    end
-    all_found
+    data.find_all { |row| row.send(attribute) == criteria }
   end
 
 end

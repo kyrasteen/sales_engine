@@ -2,20 +2,28 @@ require 'csv'
 require_relative 'items_parser'
 
 class ItemsRepo
-  attr_reader :data, :items_parser
+  
+  attr_reader :data, :filename
 
   def initialize(filename, se_self)
-    @items_parser = ItemsParser.new(filename, self)
+    @filename = filename
     @data = items_parser.parse
+  end
+
+  def items_parser
+    @items_parser ||= ItemsParser.new(filename, self)
   end
 
   def all
     data
   end
 
+  def find_random
+    rand(0..data.length)
+  end
+
   def random
-    record = rand(0..data.length)
-    data[record]
+    data[find_random]
   end
 
   def find_by_id(id)
@@ -74,23 +82,14 @@ class ItemsRepo
     find_all_by_attribute(:merchant_id, merchant_id)
   end
 
-
   private
+
   def find_by_attribute(attribute,criteria)
-    data.each_with_index do |row, index|
-      if row.send(attribute) == criteria
-        return data[index]
-      end
-    end
+    data.find { |row| row.send(attribute) == criteria }
   end
 
   def find_all_by_attribute(attribute, criteria)
-    all_found = []
-    data.each_with_index do |row, index|
-      if row.send(attribute) == criteria
-        all_found << data[index]
-      end
-    end
-    all_found
+    data.find_all { |row| row.send(attribute) == criteria }
   end
+
 end

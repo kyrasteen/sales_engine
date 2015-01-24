@@ -4,7 +4,7 @@ require_relative 'merchants'
 
 class MerchantsParser
 
-  attr_reader :filename, :mr_self, :merchants
+  attr_reader :filename, :mr_self
 
   def initialize(filename, mr_self)
     @filename = filename
