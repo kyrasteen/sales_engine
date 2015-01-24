@@ -12,7 +12,7 @@ class InvoicesRepo
   end
 
   def invoices_parser
-    @invoices_parser ||= InvoicesParser.new(filename, sales_engine)
+    @invoices_parser ||= InvoicesParser.new(filename, self)
   end
 
   def all
