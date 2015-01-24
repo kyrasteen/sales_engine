@@ -58,6 +58,14 @@ class InvoiceItemsRepo
     find_all_by_attribute(:invoice_id, invoice_id)
   end
 
+  def find_by_item_id(item_id)
+    find_by_attribute(:item_id, item_id)
+  end
+
+  def find_all_by_item_id(item_id)
+    find_all_by_attribute(:item_id, item_id)
+  end
+
   def find_by_quantity(quantity)
     find_by_attribute(:quantity, quantity.to_s)
   end
@@ -75,7 +83,7 @@ class InvoiceItemsRepo
   end
 
   private
-  
+
   def find_by_attribute(attribute,criteria)
     data.find { |row| row.send(attribute) == criteria }
   end
