@@ -14,7 +14,7 @@ class Transactions
   end
 
   def invoice
-    tr_self.transactions_repository.find_all_by_invoice_id(id)
+    tr_self.find_invoices(invoice_id.to_i)
   end
 
 end
