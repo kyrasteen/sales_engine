@@ -2,20 +2,28 @@ require 'csv'
 require_relative 'customers_parser'
 
 class CustomersRepo
-  attr_reader :data, :customers_parser
+  attr_reader :data, :filename, :sales_engine
 
-  def initialize(filename, se_self)
-    @customers_parser = CustomersParser.new(filename, se_self)
+  def initialize(filename, sales_engine)
+    @filename = filename
+    @sales_engine = sales_engine
     @data = customers_parser.parse
+  end
+
+  def customers_parser
+    @customers_parser ||= CustomersParser.new(filename, sales_engine)
   end
 
   def all
     data
   end
 
+  def find_random
+    rand(0..data.length)
+  end
+
   def random
-    record = rand(0..data.length)
-    data[record]
+    data[find_random]
   end
 
   def find_by_id(id)
@@ -60,21 +68,11 @@ class CustomersRepo
 
   private
   def find_by_attribute(attribute,criteria)
-    data.each_with_index do |row, index|
-      if row.send(attribute) == criteria
-        return data[index]
-      end
-    end
+    data.find { |row| row.send(attribute) == criteria }
   end
 
   def find_all_by_attribute(attribute, criteria)
-    all_found = []
-    data.each_with_index do |row, index|
-      if row.send(attribute) == criteria
-        all_found << data[index]
-      end
-    end
-    all_found
+    data.find_all { |row| row.send(attribute) == criteria }
   end
 
 end

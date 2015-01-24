@@ -3,20 +3,28 @@ require_relative 'invoice_items_parser'
 
 class InvoiceItemsRepo
 
-  attr_reader :invoices, :data, :invoice_items_parser
+  attr_reader :invoices, :data, :filename, :sales_engine
 
-  def initialize(filename, se_self)
-    @invoice_items_parser = InvoiceItemsParser.new(filename, se_self)
+  def initialize(filename, sales_engine)
+    @filename = filename
+    @sales_engine = sales_engine
     @data = invoice_items_parser.parse
+  end
+
+  def invoice_items_parser
+    @invoice_items_parser ||= InvoiceItemsParser.new(filename, sales_engine)
   end
 
   def all
     data
   end
 
+  def find_random
+    rand(0..data.length)
+  end
+
   def random
-    record = rand(0..data.length)
-    data[record]
+    data[find_random]
   end
 
   def find_by_id(id)
@@ -70,21 +78,11 @@ class InvoiceItemsRepo
 
   private
   def find_by_attribute(attribute,criteria)
-    data.each_with_index do |row, index|
-      if row.send(attribute) == criteria
-        return data[index]
-      end
-    end
+    data.find { |row| row.send(attribute) == criteria }
   end
 
   def find_all_by_attribute(attribute, criteria)
-    all_found = []
-    data.each_with_index do |row, index|
-      if row.send(attribute) == criteria
-        all_found << data[index]
-      end
-    end
-    all_found
+    data.find_all { |row, index| row.send(attribute) == criteria }
   end
 
 

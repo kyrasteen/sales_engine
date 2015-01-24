@@ -6,7 +6,7 @@ class MerchantsRepo
   attr_reader :invoices, :data, :merchants_parser, :merchants
 
   def initialize(filename, se_self)
-    @merchants_parser = MerchantsParser.new(filename, se_self)
+    @merchants_parser = MerchantsParser.new(filename, self)
     @data = merchants_parser.parse
     @merchants = merchants_parser.merchants
   end
