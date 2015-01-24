@@ -40,4 +40,5 @@ class SalesEngine
   def transactions_repository(filename = './data/transactions.csv')
     @transactions_repository ||= TransactionsRepo.new(filename, self)
   end
+
 end
