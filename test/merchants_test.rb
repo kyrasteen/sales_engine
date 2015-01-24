@@ -25,7 +25,7 @@ class MerchantsTest < Minitest::Test
 
   def test_it_finds_related_items
     assert @merchant.items
-    assert_equal 1, @merchant.items.length
+    assert_equal 15, @merchant.items.length
   end
 
   def test_it_finds_related_invoices
