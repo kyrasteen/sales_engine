@@ -1,9 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require_relative '../lib/sales_engine'
-require_relative '../lib/invoices_parser'
-require_relative '../lib/invoices'
-
 
 class InvoicesTest < Minitest::Test
 
