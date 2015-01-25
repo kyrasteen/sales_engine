@@ -20,5 +20,14 @@ class Items
   def merchant
     ir_self.find_merchant(merchant_id.to_i)
   end
-  
+
+  def grouped_items_by_date
+    grouped_invoice_items = invoice_items.group_by(&:updated_at)
+  end
+
+  def best_day
+    date = Date.parse(grouped_items_by_date.max_by(&:length)[0])
+    date.strftime('%a, %d %b %Y')
+  end
+
 end

@@ -1,9 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require_relative '../lib/sales_engine'
-require_relative '../lib/invoices_parser'
-require_relative '../lib/invoices'
-
 
 class InvoicesTest < Minitest::Test
 
@@ -27,7 +24,7 @@ class InvoicesTest < Minitest::Test
 
   def test_it_finds_related_invoice_items
     assert @invoices_se_repo.invoice_items
-  
+
     assert_equal 0, @invoices_se_repo.invoice_items.length
   end
 
