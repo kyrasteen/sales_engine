@@ -12,7 +12,7 @@ class Customers
   end
 
   def invoices
-    cr_self.find_all_by_id(id)
+    cr_self.find_invoices(id.to_s)
   end
 
 end

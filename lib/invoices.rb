@@ -1,5 +1,3 @@
-require_relative 'invoices_repo'
-
 class Invoices
   attr_reader :id, :customer_id, :merchant_id, :status, :created_at, :updated_at, :invoice_repo_self
 
@@ -18,20 +16,20 @@ class Invoices
   end
 
   def invoice_items
-   invoice_repo_self.find_invoice_items(id.to_s)
+   invoice_repo_self.find_invoice_items(id)
   end
 
-  # def items
-    # invoice_repo_self.find_items(id.to_s) 
-  # end
+  def items
+    invoice_repo_self.find_items(id.to_i) 
+  end
 
-  # def customer
-    # invoice_repo_self.find_customer(id.to_s)
-  # end
+  def customer
+    invoice_repo_self.find_customer(id.to_s)
+  end
 
-  # def merchant
-    # invoice_repo_self.find_merchant(id.to_s)
-  # end
+  def merchant
+    invoice_repo_self.find_merchant(id.to_s)
+  end
 
 
 
