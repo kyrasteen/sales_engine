@@ -14,11 +14,11 @@ class InvoiceItems
   end
 
   def invoice
-    @invoice_items_repo_self.find_all_by_invoice_id(id)
+    @invoice_items_repo_self.find_invoices(id)
   end
 
   def item
-    @invoice_items_repo_self.find_all_by_item_id(id)
+    @invoice_items_repo_self.find_item(id)
   end
 
 end
