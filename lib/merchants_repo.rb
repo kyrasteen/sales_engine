@@ -1,5 +1,6 @@
 require 'csv'
 require_relative 'sales_engine'
+require_relative 'merchants_parser'
 
 class MerchantsRepo
 

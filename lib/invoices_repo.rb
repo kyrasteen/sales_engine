@@ -1,11 +1,12 @@
 require 'csv'
+require_relative 'sales_engine'
 require_relative 'invoices_parser'
-
 class InvoicesRepo
 
-  attr_reader :data, :filename
+  attr_reader :data, :filename, :se_self
 
-  def initialize(filename, sales_engine)
+  def initialize(filename, se_self)
+    @se_self = se_self
     @filename = filename
     @data = invoices_parser.parse
   end
@@ -13,6 +14,26 @@ class InvoicesRepo
   def invoices_parser
     @invoices_parser ||= InvoicesParser.new(filename, self)
   end
+
+  def find_transactions(invoice_id)
+    se_self.transactions_repository.find_all_by_invoice_id(invoice_id)
+  end
+
+  def find_invoice_items(invoice_id)
+    se_self.invoice_items_repository.find_all_by_invoice_id(invoice_id)
+  end
+
+  # def find_items_thru_invoice_items(invoice_id)
+  #   se_self.invoice_items_repository.find_all_by_invoice_id(invoice_id)
+  # end
+
+  # def find_customer(invoice_id)
+  #   se_self.customers_repository.find_all_by_invoice_id(invoice_id)
+  # end
+
+  # def find_merchant(invoice_id)
+  #   se_self.merchants_repository.find_all_by_invoice_id(invoice_id)
+  # end
 
   def all
     data
