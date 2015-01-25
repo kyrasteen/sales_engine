@@ -2,7 +2,7 @@ class InvoiceItems
 
   attr_reader :id, :created_at, :updated_at, :item_id, :invoice_id, :quantity, :unit_price, :invoice_items_repo_self
 
-  def initialize(line, mr_self)
+  def initialize(line, invoice_items_repo_self)
     @id = line[:id].to_i
     @invoice_id = line[:invoice_id].to_i
     @item_id = line[:item_id].to_i
@@ -14,11 +14,11 @@ class InvoiceItems
   end
 
   def invoice
-    @invoice_items_repo_self.find_invoices(id.to_s)
+    @invoice_items_repo_self.find_all_by_invoice_id(id)
   end
 
   def item
-    @invoice_items_repo_self.find_invoices(id.to_s)
+    @invoice_items_repo_self.find_all_by_item_id(id)
   end
 
 end
