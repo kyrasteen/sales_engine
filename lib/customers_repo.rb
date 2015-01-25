@@ -3,11 +3,12 @@ require_relative 'customers_parser'
 
 class CustomersRepo
   
-  attr_reader :data, :filename
+  attr_reader :data, :filename, :se_self
 
-  def initialize(filename, sales_engine)
+  def initialize(filename, se_self)
     @filename = filename
     @data = customers_parser.parse
+    @se_self = se_self
   end
 
   def customers_parser
@@ -64,6 +65,10 @@ class CustomersRepo
 
   def find_all_by_last_name(last_name)
     find_all_by_attribute(:last_name, last_name)
+  end
+
+  def find_invoices(customer_id)
+    se_self.invoices_repository.find_all_by_customer_id(customer_id)
   end
 
   private

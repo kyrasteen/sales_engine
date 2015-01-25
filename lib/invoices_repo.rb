@@ -23,17 +23,19 @@ class InvoicesRepo
     se_self.invoice_items_repository.find_all_by_invoice_id(invoice_id)
   end
 
-  # def find_items_thru_invoice_items(invoice_id)
-  #   se_self.invoice_items_repository.find_all_by_invoice_id(invoice_id)
-  # end
+  def find_items(invoice_id)
+    #error
+    se_self.invoice_items_repository.find_all_by_invoice_id(invoice_id)
+  end
 
-  # def find_customer(invoice_id)
-  #   se_self.customers_repository.find_all_by_invoice_id(invoice_id)
-  # end
+  def find_customer(invoice_id)
+    #error
+    se_self.customers_repository.find_all_by_invoice_id(invoice_id)
+  end
 
-  # def find_merchant(invoice_id)
-  #   se_self.merchants_repository.find_all_by_invoice_id(invoice_id)
-  # end
+  def find_merchant(invoice_id)
+    se_self.merchants_repository.find_all_by_invoice_id(invoice_id)
+  end
 
   def all
     data

@@ -24,9 +24,10 @@ class CustomersTest < Minitest::Test
     assert_equal "kyra", customers.first_name
   end
 
-  def test_it_can_find_an_invoice
+  def test_it_can_find_related_invoices
+    #concerned this data is incorrect
     assert @customer.invoices
-    assert_equal 1, @customer.id
+    assert_equal 8, @customer.invoices.length
   end
 
 end
