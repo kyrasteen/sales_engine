@@ -35,4 +35,9 @@ class ItemsTest < Minitest::Test
     assert_equal 1, @item.merchant.length
   end
 
+  def test_it_finds_best_day
+    assert @item.best_day
+    assert_equal "date", @item.best_day
+  end
+
 end
