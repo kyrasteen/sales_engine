@@ -26,7 +26,7 @@ class InvoiceItemsTest < Minitest::Test
 
   def test_it_can_find_an_invoice
     @invoice_items_se_repo.invoice
-    assert_equal 8, @invoice_items_se_repo.invoice.length
+    assert_equal 1, @invoice_items_se_repo.invoice.length
   end
 
   def test_it_can_find_an_item
