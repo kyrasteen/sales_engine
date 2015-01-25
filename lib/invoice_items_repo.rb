@@ -3,11 +3,12 @@ require_relative 'invoice_items_parser'
 
 class InvoiceItemsRepo
 
-  attr_reader :data, :filename
+  attr_reader :data, :filename, :se_self
 
   def initialize(filename, sales_engine)
     @filename = filename
     @data = invoice_items_parser.parse
+    @se_self = se_self
   end
 
   def invoice_items_parser
@@ -81,6 +82,15 @@ class InvoiceItemsRepo
   def find_all_by_unit_price(price)
     find_all_by_attribute(:unit_price, price.to_s)
   end
+
+  def find_invoices(invoice_id)
+    se_self.invoices_repository.find_all_by_id(invoice_id)
+  end
+
+  def find_item(item_id)
+    se_self.invoices_repository.find_all_by_id(item_id)
+  end
+
 
   private
 
