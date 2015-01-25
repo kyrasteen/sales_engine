@@ -20,15 +20,15 @@ class Invoices
   end
 
   def items
-    invoice_repo_self.find_items(id.to_i) 
+    invoice_repo_self.find_items(id.to_i)
   end
 
   def customer
-    invoice_repo_self.find_customer(id.to_s)
+    invoice_repo_self.find_customer(id)
   end
 
   def merchant
-    invoice_repo_self.find_merchant(id.to_s)
+    invoice_repo_self.find_merchant(id)
   end
 
 

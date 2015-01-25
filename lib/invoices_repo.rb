@@ -24,17 +24,20 @@ class InvoicesRepo
   end
 
   def find_items(invoice_id)
-    #error
-    se_self.invoice_items_repository.find_all_by_invoice_id(invoice_id)
+    invoice_items = se_self.invoice_items_repository.find_all_by_invoice_id(invoice_id)
+    #returns array of invoice items
+    #goal is return an array of items
+    invoice_items.map do |invoice_item|
+      invoice_item.item_id
+    end
   end
 
   def find_customer(invoice_id)
-    #error
-    se_self.customers_repository.find_all_by_invoice_id(invoice_id)
+    se_self.customers_repository.find_all_by_id(invoice_id)
   end
 
   def find_merchant(invoice_id)
-    se_self.merchants_repository.find_all_by_invoice_id(invoice_id)
+    se_self.merchants_repository.find_all_by_id(invoice_id)
   end
 
   def all

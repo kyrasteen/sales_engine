@@ -28,7 +28,6 @@ class InvoicesTest < Minitest::Test
   end
 
   def test_it_finds_related_items
-    #I think this test is written incorrectly
     assert @invoices_se_repo.items
     assert_equal 8, @invoices_se_repo.items.length
   end
