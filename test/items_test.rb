@@ -1,5 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
+
 require_relative '../lib/sales_engine'
 
 class ItemsTest < Minitest::Test
@@ -37,7 +38,7 @@ class ItemsTest < Minitest::Test
 
   def test_it_finds_best_day
     assert @item.best_day
-    assert_equal "date", @item.best_day
+    assert_equal "Tue, 27 Mar 2012", @item.best_day
   end
 
 end

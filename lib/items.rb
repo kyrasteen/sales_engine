@@ -1,3 +1,5 @@
+require 'date'
+
 class Items
   attr_reader :id, :name, :created_at, :updated_at, :merchant_id,
     :unit_price, :description, :ir_self
@@ -14,19 +16,25 @@ class Items
   end
 
   def invoice_items
-    ir_self.find_invoice_items(id)
+    ir_self.find_invoice_items(id) 
+
   end
 
   def merchant
     ir_self.find_merchant(merchant_id.to_i)
   end
 
-  def grouped_items_by_date
-    grouped_invoice_items = invoice_items.group_by(&:updated_at)
+  def find_best_date
+     #array of invoice items by item id
+    invoice_items.group_by do |invoice_item| 
+      collection_of_invoices = invoice_item.invoice 
+      collection_of_invoices.map { |invoice| invoice.updated_at }.max
+    end
+
   end
 
   def best_day
-    date = Date.parse(grouped_items_by_date.max_by(&:length)[0])
+    date = Date.parse(find_best_date.keys[0])
     date.strftime('%a, %d %b %Y')
   end
 
