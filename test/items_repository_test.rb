@@ -58,5 +58,11 @@ class ItemsRepoTest < Minitest::Test
     assert_equal "2", @items.find_by_merchant_id('2').merchant_id
   end
 
+  def test_it_can_find_top_two_ranked_items_by_revenue
+
+    assert_equal [],  @items.most_revenue(2)
+  end
+
+
 
 end
