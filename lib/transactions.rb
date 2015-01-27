@@ -17,4 +17,8 @@ class Transactions
     tr_self.find_invoices(invoice_id.to_i)
   end
 
+  def successful?
+    result == 'success'
+  end
+
 end

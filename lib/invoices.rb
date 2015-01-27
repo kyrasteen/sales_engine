@@ -31,6 +31,10 @@ class Invoices
     invoice_repo_self.find_merchant(id)
   end
 
-
+  def total_amount_billed
+    invoice_items.reduce(0) do |sum, invoice_item|
+      sum + invoice_item.total_price
+    end
+  end
 
 end
