@@ -36,4 +36,8 @@ class MerchantsTest < Minitest::Test
     assert_equal 'BigDecimal', @merchant.revenue
   end
 
+  def test_it_finds_total_revenue_for_given_date
+    assert_equal 'bigDecimal', @merchant.revenue('"2012-03-25 13:54:11 UTC"')
+  end
+
 end

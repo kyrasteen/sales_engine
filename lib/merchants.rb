@@ -25,7 +25,14 @@ class Merchants
   end
 
   def revenue(date = nil)
-    successful_invoices.reduce(0) do |revenue, invoice|
+    #if a date is passed, then select the invoices that are only from that dat
+    #then do math
+    if date
+      invoice_pool = successful_invoices.select { |invoice| invoice.updated_at == date }
+    else
+      invoice_pool = successful_invoices
+    end
+    invoice_pool.reduce(0) do |revenue, invoice|
       revenue + invoice.total_amount_billed
     end
   end
