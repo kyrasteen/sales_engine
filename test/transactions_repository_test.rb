@@ -1,13 +1,13 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require_relative '../lib/transactions_repo'
+require_relative '../lib/transaction_repository'
 require 'pry'
 
-class TransactionsRepoTest < Minitest::Test
+class TransactionRepoTest < Minitest::Test
 
   def setup
     filename = ('./test/support/transactions_test_data.csv')
-    @transactions = TransactionsRepo.new(filename, nil)
+    @transactions = TransactionRepo.new(filename, nil)
   end
 
   def test_it_finds_all

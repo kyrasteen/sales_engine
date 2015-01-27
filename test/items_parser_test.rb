@@ -1,12 +1,12 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require_relative '../lib/items_parser'
+require_relative '../lib/item_parser'
 
 
 class ItemsParserTest < Minitest::Test
   def test_it_parses_a_csv_of_data
     filename = "test/support/items_test_data.csv"
-    items_parser = ItemsParser.new(filename, nil)
+    items_parser = ItemParser.new(filename, nil)
     items = items_parser.parse
 
     first = items.first

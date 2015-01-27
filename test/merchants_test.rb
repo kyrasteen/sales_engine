@@ -2,11 +2,11 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require_relative '../lib/sales_engine'
 
-class MerchantsTest < Minitest::Test
+class MerchantTest < Minitest::Test
 
   def setup
     engine = SalesEngine.new
-    @merchant = engine.merchants_repository('test/support/merchants_test_data.csv').data[0]
+    @merchant = engine.merchant_repository('test/support/merchants_test_data.csv').data[0]
   end
 
   def test_it_stores_an_id

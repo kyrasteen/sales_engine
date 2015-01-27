@@ -1,12 +1,12 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require_relative '../lib/transactions_parser'
+require_relative '../lib/transaction_parser'
 
 
-class TransactionsParserTest < Minitest::Test
+class TransactionParserTest < Minitest::Test
   def test_it_parses_a_csv_of_data
     filename = "test/support/transactions_test_data.csv"
-    t_parser = TransactionsParser.new(filename, nil)
+    t_parser = TransactionParser.new(filename, nil)
     transactions = t_parser.parse
 
     first = transactions.first

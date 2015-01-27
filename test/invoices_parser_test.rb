@@ -1,13 +1,13 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require_relative '../lib/invoices_parser'
+require_relative '../lib/invoice_parser'
 
 
-class InvoicesParserTest < Minitest::Test
+class InvoiceParserTest < Minitest::Test
   def test_it_parses_a_csv_of_data
     filename = "test/support/invoices_test_data.csv"
-    invoices_parser = InvoicesParser.new(filename, nil)
-    invoices = invoices_parser.parse
+    invoice_parser = InvoiceParser.new(filename, nil)
+    invoices = invoice_parser.parse
 
     first = invoices.first
     assert_equal 1, first.id
