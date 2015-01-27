@@ -16,13 +16,13 @@ class ItemsRepo
   end
 
   def find_successful_transactions_for_item
-    data.collect do |item| 
-      found_invoice_items = item.invoice_items 
+    data.collect do |item|
+      found_invoice_items = item.invoice_items
                 require 'pry'; binding.pry
-      found_invoice_items.collect do |invoice_item| 
+      found_invoice_items.collect do |invoice_item|
         found_invoices = invoice_item.invoice
-          found_invoices.select do |invoice| 
-            found_transactions = invoice.transactions 
+          found_invoices.select do |invoice|
+            found_transactions = invoice.transactions
               found_transactions.select do |transaction|
                 transaction.result == "success"
               end
