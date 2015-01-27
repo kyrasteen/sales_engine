@@ -15,6 +15,39 @@ class ItemsRepo
     @items_parser ||= ItemsParser.new(filename, self)
   end
 
+  def find_successful_transactions_for_item
+    data.collect do |item| 
+      found_invoice_items = item.invoice_items 
+                require 'pry'; binding.pry
+      found_invoice_items.collect do |invoice_item| 
+        found_invoices = invoice_item.invoice
+          found_invoices.select do |invoice| 
+            found_transactions = invoice.transactions 
+              found_transactions.select do |transaction|
+                transaction.result == "success"
+              end
+          end
+      end
+    end
+  end
+
+  def find_all_in
+
+
+  def most_revenue(top_num)
+    find_successful_transactions_for_item
+    #iterating over successful transactions
+    #invoice items: revenue = qty * unit_price
+    #calc revenue
+    #return top 2 items by revenue
+
+  end
+
+    #each item find your invoice_items
+    #for each invoice_item, find your one invoice
+    #for each invoice find all of your successful transactions
+    #if no successful transaction, don't do the math
+
   def all
     data
   end

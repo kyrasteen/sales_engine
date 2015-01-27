@@ -30,7 +30,6 @@ class Items
       collection_of_invoices = invoice_item.invoice 
       collection_of_invoices.map { |invoice| invoice.updated_at }.max
     end
-
   end
 
   def best_day
