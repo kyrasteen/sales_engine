@@ -1,12 +1,12 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require_relative '../lib/invoices_repo'
+require_relative '../lib/invoice_repository'
 
-class InvoicesRepoTest < Minitest::Test
+class InvoiceRepoTest < Minitest::Test
 
   def setup
     filename = './test/support/invoices_test_data.csv'
-    @invoices_repo = InvoicesRepo.new(filename, nil)
+    @invoices_repo = InvoiceRepo.new(filename, nil)
   end
 
   def test_it_finds_all

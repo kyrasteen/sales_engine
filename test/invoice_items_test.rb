@@ -6,7 +6,7 @@ class InvoiceItemsTest < Minitest::Test
 
   def setup
     engine = SalesEngine.new
-    @invoice_items_se_repo = engine.invoice_items_repository('./test/support/invoice_items_test_data.csv').data[0]
+    @invoice_items_se_repo = engine.invoice_item_repository('./test/support/invoice_items_test_data.csv').data[0]
   end
 
   def test_it_stores_an_id
