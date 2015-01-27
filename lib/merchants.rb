@@ -25,8 +25,6 @@ class Merchants
   end
 
   def revenue(date = nil)
-    #if a date is passed, then select the invoices that are only from that dat
-    #then do math
     if date
       invoice_pool = successful_invoices.select { |invoice| invoice.updated_at == date }
     else
@@ -36,4 +34,15 @@ class Merchants
       revenue + invoice.total_amount_billed
     end
   end
+
+  def favorite_customer
+    #find invoices with successful transaction
+    #for each invoice find customer
+    #group invoices by customer
+    #find largest group and return corresponding customer object
+    found_customers = successful_invoices.group_by { |invoice| invoice.customer[0] }
+    #require 'pry'; binding.pry
+    found_customers.max_by { |customer, found_invoices| found_invoices.length  ; require 'pry'; binding.pry}
+  end
+
 end
