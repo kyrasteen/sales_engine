@@ -25,9 +25,18 @@ class CustomersTest < Minitest::Test
   end
 
   def test_it_can_find_related_invoices
-    #concerned this data is incorrect
     assert @customer.invoices
     assert_equal 8, @customer.invoices.length
+  end
+
+  def test_it_can_find_related_transactions
+    assert @customer.transactions
+    assert_equal 8, @customer.transactions.length
+  end
+
+  def test_it_can_find_favorite_merchant_by_amount_of_successful_transactions
+    assert @customer.favorite_merchant
+    assert_equal "Schroeder-Jerde", @customer.favorite_merchant[0].name
   end
 
 end

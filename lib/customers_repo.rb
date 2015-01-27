@@ -2,7 +2,7 @@ require 'csv'
 require_relative 'customers_parser'
 
 class CustomersRepo
-  
+
   attr_reader :data, :filename, :se_self
 
   def initialize(filename, se_self)
