@@ -31,4 +31,9 @@ class MerchantsTest < Minitest::Test
     assert_equal 59, @merchant.invoices.length
   end
 
+  def test_it_finds_total_revenue_across_all_transactions
+    assert @merchant.revenue
+    assert_equal 'BigDecimal', @merchant.revenue
+  end
+
 end

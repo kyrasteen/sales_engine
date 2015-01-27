@@ -18,4 +18,15 @@ class Merchants
     mr_self.find_invoices(id.to_s)
   end
 
+  def successful_invoices
+    invoices.select do |invoice|
+      invoice.transactions.select { |transaction| transaction.successful? }
+    end
+  end
+
+  def revenue(date = nil)
+    successful_invoices.reduce(0) do |revenue, invoice|
+      revenue + invoice.total_amount_billed
+    end
+  end
 end

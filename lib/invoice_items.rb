@@ -21,4 +21,8 @@ class InvoiceItems
     @invoice_items_repo_self.find_item(id)
   end
 
+  def total_price
+    @quantity.to_i * @unit_price.to_i
+  end
+
 end
