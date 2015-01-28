@@ -4,8 +4,8 @@ class InvoiceItem
 
   def initialize(line, invoice_items_repo_self)
     @id = line[:id].to_i
-    @invoice_id = line[:invoice_id]
-    @item_id = line[:item_id]
+    @invoice_id = line[:invoice_id].to_i
+    @item_id = line[:item_id].to_i
     @created_at = line[:created_at]
     @updated_at = line[:updated_at]
     @quantity = line[:quantity]
