@@ -43,7 +43,7 @@ class InvoiceRepo
   end
 
   def find_random
-    rand(0..data.length)
+    rand(0..data.length-1)
   end
 
   def random
