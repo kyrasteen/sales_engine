@@ -28,7 +28,7 @@ class Customer
 
   def favorite_merchant
     merchants = successful_invoices.group_by { |invoice| invoice.merchant[0] }
-    merchants.max_by { |merchant, invoices| invoices.length }
+    merchants.max_by { |merchant, invoices| invoices.length }[0]
   end
 
 end

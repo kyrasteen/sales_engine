@@ -34,17 +34,13 @@ class Merchant
   end
 
   def favorite_customer
-
+    found_customers = successful_invoices.group_by { |invoice| invoice.customer}
+    found_customers.max_by { |customer, invoices| invoices.length }[0]
   end
 
   def customers_with_pending_invoices
-    #find all invoices for the merchant
-    #delete all invoices from collection that had successful transactions
-    #for each pending invoice, find its customer and return
     pending_invoices = invoices - successful_invoices
     pending_invoices.map { |invoice| invoice.customer }
   end
-
-  #customers_with_pending_invoices returns a collection of Customer instances which have pending (unpaid) invoices. An invoice is considered pending if none of it’s transactions are successful.
 
 end
