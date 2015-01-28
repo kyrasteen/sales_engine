@@ -3,7 +3,7 @@ class Invoice
 
   def initialize(line, invoice_repo_self)
     @id = line[:id].to_i
-    @customer_id = line[:customer_id].to_i
+    @customer_id = line[:customer_id]
     @merchant_id = line[:merchant_id].to_i
     @status = line[:status]
     @created_at = line[:created_at]

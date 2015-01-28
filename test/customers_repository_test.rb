@@ -15,7 +15,7 @@ class CustomerRepoTest < Minitest::Test
   end
 
   def test_it_can_find_by_id
-    assert_equal "1", @customers.find_by_id(1).id.to_s
+    assert_equal "1", @customers.find_by_id("1").id
   end
 
   def test_it_can_find_all_by_id

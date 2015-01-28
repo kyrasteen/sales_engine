@@ -72,7 +72,8 @@ class InvoiceItemRepo
   end
 
   def find_all_by_quantity(quantity)
-    find_all_by_attribute(:quantity, quantity.to_s)
+    find_all_by_attribute(:quantity, quantity)
+   # find_all_by_attribute(:quantity, quantity.to_s)
   end
 
   def find_by_unit_price(price)

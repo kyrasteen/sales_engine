@@ -10,13 +10,8 @@ class CustomerTest < Minitest::Test
   end
 
   def test_it_stores_an_id
-    customers = Customer.new({id:1}, nil)
-    assert_equal 1, customers.id
-  end
-
-  def test_it_stores_id_as_integer
-    customers = Customer.new({id:'1'}, nil)
-    assert_equal 1, customers.id
+    customers = Customer.new({id:"1"}, nil)
+    assert_equal "1", customers.id
   end
 
   def test_it_stores_a_first_name
