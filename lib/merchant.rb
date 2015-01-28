@@ -19,9 +19,7 @@ class Merchant
   end
 
   def successful_invoices
-    invoices.select do |invoice|
-      invoice.transactions.select { |transaction| transaction.successful? }
-    end
+    invoices.select { |invoice| invoice.successful_transaction? }
   end
 
   def revenue(date = nil)
@@ -36,8 +34,7 @@ class Merchant
   end
 
   def favorite_customer
-    found_customers = successful_invoices.group_by { |invoice| invoice.customer }
-    found_customers.max_by { |customer, found_invoices| found_invoices.length }
+
   end
 
   def customers_with_pending_invoices
