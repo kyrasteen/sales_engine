@@ -74,7 +74,18 @@ class MerchantRepo
     #sort merchants by revenue
     #reverse
     #take top x
-    data.sort_by { ||}
+    found_revenues = data.sort_by { |merchant| merchant.revenue }
+    found_revenues.reverse.take(number)
+  end
+
+  def most_items(number)
+
+  end
+
+  def revenue(date)
+    #for each merchant find their revenue and pass in date
+    #reduce revenues
+    data.reduce(0) { |merchant| merchant.revenue(date) }
   end
 
 

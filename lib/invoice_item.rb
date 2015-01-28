@@ -1,3 +1,5 @@
+require 'bigdecimal'
+
 class InvoiceItem
 
   attr_reader :id, :created_at, :updated_at, :item_id, :invoice_id, :quantity, :unit_price, :invoice_items_repo_self
@@ -9,7 +11,7 @@ class InvoiceItem
     @created_at = line[:created_at]
     @updated_at = line[:updated_at]
     @quantity = line[:quantity]
-    @unit_price = line[:unit_price]
+    @unit_price = BigDecimal(line[:unit_price].to_i).round(2)
     @invoice_items_repo_self = invoice_items_repo_self
   end
 

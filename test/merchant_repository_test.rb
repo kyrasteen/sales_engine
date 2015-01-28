@@ -46,8 +46,17 @@ class MerchantRepoTest < Minitest::Test
   end
 
   def test_it_finds_most_revenue_x
-    assert_equal 3, @merch.most_revenue(3).length
+    assert_equal 3, @merch.most_revenue(3)[0].name
+  end
 
+  def test_it_finds_most_items_x
+    skip
+    assert_equal 3, @merch.most_items(3)[0].name
+  end
+
+  def test_it_finds_revenue
+    skip
+    assert_equal 100, @merch.revenue('2012-03-27 14:54:00 UTC')
   end
 
 end

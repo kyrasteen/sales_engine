@@ -31,7 +31,7 @@ class CustomerTest < Minitest::Test
 
   def test_it_can_find_favorite_merchant_by_amount_of_successful_transactions
     assert @customer.favorite_merchant
-    assert_equal "Balistreri, Schaefer and Kshlerin", @customer.favorite_merchant[0].name
+    assert_equal "Balistreri, Schaefer and Kshlerin", @customer.favorite_merchant.name
   end
 
 end
