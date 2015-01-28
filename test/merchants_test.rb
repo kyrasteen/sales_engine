@@ -41,7 +41,11 @@ class MerchantTest < Minitest::Test
   end
 
   def test_it_finds_favorite_customer
-    skip
+    assert_equal "Parker", @merchant.favorite_customer.first_name
+  end
+
+  def test_it_finds_customers_with_pending_invoices
+    assert_equal 3, @merchant.customers_with_pending_invoices.length
   end
 
 end
