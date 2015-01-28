@@ -1,7 +1,8 @@
-require 'csv'
-require_relative 'invoice_items'
 
-class InvoiceItemsParser
+require 'csv'
+require_relative 'merchant'
+
+class MerchantParser
 
   attr_reader :filename, :mr_self
 
@@ -12,8 +13,8 @@ class InvoiceItemsParser
 
   def parse
     file = CSV.open(filename, :headers => true, :header_converters => :symbol)
-    file.map do |line|
-      InvoiceItems.new(line, mr_self)
+    @merchants = file.map do |line|
+      Merchant.new(line, mr_self)
     end
   end
 

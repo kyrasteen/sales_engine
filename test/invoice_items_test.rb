@@ -2,7 +2,7 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require_relative '../lib/sales_engine'
 
-class InvoiceItemsTest < Minitest::Test
+class InvoiceItemTest < Minitest::Test
 
   def setup
     engine = SalesEngine.new
@@ -10,17 +10,17 @@ class InvoiceItemsTest < Minitest::Test
   end
 
   def test_it_stores_an_id
-    invoice_items = InvoiceItems.new({id:1}, nil)
+    invoice_items = InvoiceItem.new({id:1}, nil)
     assert_equal 1, invoice_items.id
   end
 
   def test_it_stores_id_as_integer
-    invoice_items = InvoiceItems.new({id:'1'}, nil)
+    invoice_items = InvoiceItem.new({id:'1'}, nil)
     assert_equal 1, invoice_items.id
   end
 
   def test_it_stores_a_item_id
-    invoice_items = InvoiceItems.new({item_id: 531}, nil)
+    invoice_items = InvoiceItem.new({item_id: 531}, nil)
     assert_equal 531, invoice_items.item_id
   end
 

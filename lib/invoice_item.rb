@@ -1,4 +1,4 @@
-class InvoiceItems
+class InvoiceItem
 
   attr_reader :id, :created_at, :updated_at, :item_id, :invoice_id, :quantity, :unit_price, :invoice_items_repo_self
 
