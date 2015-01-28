@@ -21,7 +21,7 @@ class SalesEngineTest < Minitest::Test
   end
 
   def test_it_creates_invoice_items_repo
-    assert_instance_of InvoiceItemsRepo, @engine.invoice_item_repository
+    assert_instance_of InvoiceItemRepo, @engine.invoice_item_repository
   end
 
   def test_it_creates_invoices_repo
