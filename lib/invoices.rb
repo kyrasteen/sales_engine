@@ -37,4 +37,8 @@ class Invoices
     end
   end
 
+  def successful_transaction?
+    transactions.any? { |transaction| transaction.successful? }
+  end
+
 end

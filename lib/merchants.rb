@@ -19,9 +19,7 @@ class Merchants
   end
 
   def successful_invoices
-    invoices.select do |invoice|
-      invoice.transactions.select { |transaction| transaction.successful? }
-    end
+    invoices.select { |invoice| invoice.successful_transaction? }
   end
 
   def revenue(date = nil)
@@ -38,11 +36,16 @@ class Merchants
   def favorite_customer
     #find invoices with successful transaction
     #for each invoice find customer
+    found_customers = successful_invoices.map do |invoice|
+      invoice.customer
+    end
+    found_customers.
     #group invoices by customer
     #find largest group and return corresponding customer object
-    found_customers = successful_invoices.group_by { |invoice| invoice.customer[0] }
-    #require 'pry'; binding.pry
-    found_customers.max_by { |customer, found_invoices| found_invoices.length  ; require 'pry'; binding.pry}
+    # found_customers = successful_invoices.group_by { |invoice| invoice.customer[0] }
+    # #only returning one invoice per customer!!!!!
+    # found_customers.max_by { |customer, found_invoices| found_invoices.length }
+    # require 'pry'; binding.pry
   end
 
 end

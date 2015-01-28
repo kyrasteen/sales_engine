@@ -41,7 +41,7 @@ class MerchantsTest < Minitest::Test
   end
 
   def test_it_finds_favorite_customer
-    assert_equal 'customer', @merchant.favorite_customer[0].length
+    assert_equal 'customer', @merchant.favorite_customer[0][0].first_name
   end
 
 end
