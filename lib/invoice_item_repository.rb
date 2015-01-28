@@ -88,7 +88,7 @@ class InvoiceItemRepo
   end
 
   def find_item(item_id)
-    se_self.invoice_repository.find_by_id(item_id)
+    se_self.item_repository.find_by_id(item_id)
   end
 
 

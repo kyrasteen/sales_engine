@@ -14,7 +14,7 @@ class Transaction
   end
 
   def invoice
-    tr_self.find_invoices(invoice_id.to_i)[0]
+    tr_self.find_invoices(invoice_id.to_i) 
   end
 
   def successful?
