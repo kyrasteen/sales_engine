@@ -19,7 +19,7 @@ class CustomerRepoTest < Minitest::Test
   end
 
   def test_it_can_find_all_by_id
-    assert_equal 2, @customers.find_all_by_id(19).count
+    assert_equal 2, @customers.find_all_by_id('19').count
   end
 
   def test_it_can_find_by_created_at

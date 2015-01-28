@@ -38,7 +38,7 @@ class InvoiceRepoTest < Minitest::Test
   end
 
   def test_it_can_find_by_customer_id
-    assert_equal '3', @invoices_repo.find_by_customer_id('3').customer_id
+    assert_equal 3, @invoices_repo.find_by_customer_id(3).customer_id
   end
 
   def test_it_can_find_all_by_customer_id
@@ -46,7 +46,7 @@ class InvoiceRepoTest < Minitest::Test
   end
 
   def test_it_can_find_by_merchant_id
-    assert_equal '34', @invoices_repo.find_by_merchant_id('34').merchant_id
+    assert_equal 34, @invoices_repo.find_by_merchant_id(34).merchant_id
   end
 
   def test_it_can_find_all_by_merchant_id

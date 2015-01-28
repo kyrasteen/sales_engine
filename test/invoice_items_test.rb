@@ -31,7 +31,7 @@ class InvoiceItemTest < Minitest::Test
 
   def test_it_can_find_an_item
     @invoice_items_se_repo.item
-    assert_equal 1, @invoice_items_se_repo.item.length
+    assert_equal "Item Sunt Saepe", @invoice_items_se_repo.item.name
   end
 
 end

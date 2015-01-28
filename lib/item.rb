@@ -5,7 +5,7 @@ class Item
     :unit_price, :description, :ir_self
 
   def initialize(line, ir_self)
-    @id = line[:id]
+    @id = line[:id].to_i
     @name = line[:name]
     @created_at = line[:created_at]
     @updated_at = line[:updated_at]

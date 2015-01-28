@@ -10,11 +10,11 @@ class CustomerParserTest < Minitest::Test
     customers = c_parser.parse
 
     first = customers.first
-    assert_equal 1, first.id
+    assert_equal '1', first.id
     assert_equal "Joey", first.first_name
 
     second = customers[1]
-    assert_equal 2, second.id
+    assert_equal '2', second.id
     assert_equal "Cecelia", second.first_name
   end
 end

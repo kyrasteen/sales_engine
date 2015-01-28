@@ -33,7 +33,7 @@ class ItemsTest < Minitest::Test
   end
 
   def test_it_finds_related_merchant
-    assert_equal 1, @item.merchant.length
+    assert_equal "Schroeder-Jerde", @item.merchant.name
   end
 
   def test_it_finds_best_day
