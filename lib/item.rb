@@ -1,4 +1,5 @@
 require 'date'
+require 'bigdecimal'
 
 class Item
   attr_reader :id, :name, :created_at, :updated_at, :merchant_id,
@@ -10,7 +11,7 @@ class Item
     @created_at = line[:created_at]
     @updated_at = line[:updated_at]
     @description = line[:description]
-    @unit_price = line[:unit_price]
+    @unit_price = BigDecimal(line[:unit_price].to_i).round(2)
     @merchant_id = line[:merchant_id]
     @ir_self = ir_self
   end
