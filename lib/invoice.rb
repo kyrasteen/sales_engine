@@ -2,7 +2,7 @@ class Invoice
   attr_reader :id, :customer_id, :merchant_id, :status, :created_at, :updated_at, :invoice_repo_self
 
   def initialize(line, invoice_repo_self)
-    @id = line[:id].to_i
+    @id = line[:id]
     @customer_id = line[:customer_id]
     @merchant_id = line[:merchant_id].to_i
     @status = line[:status]

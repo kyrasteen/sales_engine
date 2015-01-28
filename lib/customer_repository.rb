@@ -28,7 +28,7 @@ class CustomerRepo
   end
 
   def find_by_id(id)
-    find_by_attribute(:id, id)
+    find_by_attribute(:id, id.to_s)
   end
 
   def find_all_by_id(id)

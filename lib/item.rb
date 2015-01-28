@@ -5,7 +5,7 @@ class Item
     :unit_price, :description, :ir_self
 
   def initialize(line, ir_self)
-    @id = line[:id].to_i
+    @id = line[:id]
     @name = line[:name]
     @created_at = line[:created_at]
     @updated_at = line[:updated_at]
@@ -45,7 +45,7 @@ for each invoice, take the invoice id and pass it to find transactions by id
 =end
     #these are invoice_items selected by item id
 
-  def hey_invoice_items_get_my_invoices_said_the_item 
+  def hey_invoice_items_get_my_invoices_said_the_item
     invoice_items.map {|invoice_item| invoice_item.invoice.first }
   end
 

@@ -11,11 +11,6 @@ class TransactionTest < Minitest::Test
   end
 
   def test_it_stores_an_id
-    transactions = Transaction.new({:id => 6}, nil)
-    assert_equal 6, transactions.id
-  end
-
-  def test_it_stores_ids_as_integers_only
     transactions = Transaction.new({:id => '6'}, nil)
     assert_equal 6, transactions.id
   end
@@ -27,7 +22,7 @@ class TransactionTest < Minitest::Test
 
   def test_it_finds_related_invoices
     assert @transaction.invoice
-    assert_equal 1, @transaction.invoice.id
+    assert_equal '1', @transaction.invoice.id
   end
 
 end

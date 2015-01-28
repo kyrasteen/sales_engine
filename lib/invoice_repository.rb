@@ -26,7 +26,7 @@ class InvoiceRepo
   def find_items(invoice_id)
     invoice_items = se_self.invoice_item_repository.find_all_by_invoice_id(invoice_id)
     invoice_items.map do |invoice_item|
-      invoice_item.item 
+      invoice_item.item
     end
   end
 
@@ -79,7 +79,7 @@ class InvoiceRepo
   end
 
   def find_all_by_customer_id(customer_id)
-    find_all_by_attribute(:customer_id, customer_id)
+    find_all_by_attribute(:customer_id, customer_id.to_i)
   end
 
   def find_by_merchant_id(merchant_id)
