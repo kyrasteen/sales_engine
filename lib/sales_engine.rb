@@ -1,44 +1,49 @@
-require_relative 'merchants_repo'
-require_relative 'customers_repo'
-require_relative 'invoice_items_repo'
-require_relative 'invoices_repo'
-require_relative 'items_repo'
-require_relative 'transactions_repo'
-
+require_relative 'merchant_repository'
+require_relative 'customer_repository'
+require_relative 'invoice_item_repository'
+require_relative 'invoice_repository'
+require_relative 'item_repository'
+require_relative 'transaction_repository'
 
 class SalesEngine
 
+  attr_reader :files_path
+
+  def initialize(files_path = './data')
+    @files_path = files_path
+  end
+
   def startup
-    customers_repository
-    invoice_items_repository
-    invoices_repository
-    items_repository
-    transactions_repository
-    merchants_repository
+    customer_repository
+    invoice_item_repository
+    invoice_repository
+    item_repository
+    transaction_repository
+    merchant_repository
   end
 
-  def merchants_repository(filename = './data/merchants.csv')
-    @merchants_repository ||= MerchantsRepo.new(filename, self)
+  def merchant_repository(filename = "#{files_path}/merchants.csv")
+    @merchant_repository ||= MerchantRepo.new(filename, self)
   end
 
-  def customers_repository(filename = './data/customers.csv')
-    @customers_repository ||= CustomersRepo.new(filename, self)
+  def customer_repository(filename = "#{files_path}/customers.csv")
+    @customer_repository ||= CustomerRepo.new(filename, self)
   end
 
-  def invoice_items_repository(filename = './data/invoice_items.csv')
-    @invoice_items_repository ||= InvoiceItemsRepo.new(filename, self)
+  def invoice_item_repository(filename = "#{files_path}/invoice_items.csv")
+    @invoice_item_repository ||= InvoiceItemRepo.new(filename, self)
   end
 
-  def invoices_repository(filename = './data/invoices.csv')
-    @invoices_repository ||= InvoicesRepo.new(filename, self)
+  def invoice_repository(filename = "#{files_path}/invoices.csv")
+    @invoice_repository ||= InvoiceRepo.new(filename, self)
   end
 
-  def items_repository(filename = './data/items.csv')
-    @Items_repository ||= ItemsRepo.new(filename, self)
+  def item_repository(filename = "#{files_path}/items.csv")
+    @item_repository ||= ItemsRepo.new(filename, self)
   end
 
-  def transactions_repository(filename = './data/transactions.csv')
-    @transactions_repository ||= TransactionsRepo.new(filename, self)
+  def transaction_repository(filename = "#{files_path}/transactions.csv")
+    @transaction_repository ||= TransactionRepo.new(filename, self)
   end
 
 end

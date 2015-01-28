@@ -1,8 +1,8 @@
 
 require 'csv'
-require_relative 'merchants'
+require_relative 'merchant'
 
-class MerchantsParser
+class MerchantParser
 
   attr_reader :filename, :mr_self
 
@@ -14,7 +14,7 @@ class MerchantsParser
   def parse
     file = CSV.open(filename, :headers => true, :header_converters => :symbol)
     @merchants = file.map do |line|
-      Merchants.new(line, mr_self)
+      Merchant.new(line, mr_self)
     end
   end
 

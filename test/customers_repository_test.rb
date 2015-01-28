@@ -1,13 +1,13 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require_relative '../lib/customers_repo'
+require_relative '../lib/customer_repository'
 require 'pry'
 
-class CustomersRepoTest < Minitest::Test
+class CustomerRepoTest < Minitest::Test
 
   def setup
     filename = ('./test/support/customers_test_data.csv')
-    @customers = CustomersRepo.new(filename, nil)
+    @customers = CustomerRepo.new(filename, nil)
   end
 
   def test_it_finds_all

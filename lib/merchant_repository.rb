@@ -1,8 +1,8 @@
 require 'csv'
 require_relative 'sales_engine'
-require_relative 'merchants_parser'
+require_relative 'merchant_parser'
 
-class MerchantsRepo
+class MerchantRepo
 
   attr_reader :data, :filename, :se_self
 
@@ -13,7 +13,7 @@ class MerchantsRepo
   end
 
   def merchants_parser
-    @merchants_parser ||= MerchantsParser.new(filename, self)
+    @merchants_parser ||= MerchantParser.new(filename, self)
   end
 
   def all
@@ -61,11 +61,11 @@ class MerchantsRepo
   end
 
   def find_items(merchant_id)
-    se_self.items_repository.find_all_by_merchant_id(merchant_id)
+    se_self.item_repository.find_all_by_merchant_id(merchant_id)
   end
 
   def find_invoices(merchant_id)
-    se_self.invoices_repository.find_all_by_merchant_id(merchant_id)
+    se_self.invoice_repository.find_all_by_merchant_id(merchant_id)
   end
 
 private

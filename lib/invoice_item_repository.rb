@@ -1,7 +1,7 @@
 require 'csv'
-require_relative 'invoice_items_parser'
+require_relative 'invoice_item_parser'
 
-class InvoiceItemsRepo
+class InvoiceItemRepo
 
   attr_reader :data, :filename, :se_self
 
@@ -12,7 +12,7 @@ class InvoiceItemsRepo
   end
 
   def invoice_items_parser
-    @invoice_items_parser ||= InvoiceItemsParser.new(filename, self)
+    @invoice_items_parser ||= InvoiceItemParser.new(filename, self)
   end
 
   def all
@@ -84,11 +84,11 @@ class InvoiceItemsRepo
   end
 
   def find_invoices(invoice_id)
-    se_self.invoices_repository.find_all_by_id(invoice_id)
+    se_self.invoice_repository.find_all_by_id(invoice_id)
   end
 
   def find_item(item_id)
-    se_self.invoices_repository.find_all_by_id(item_id)
+    se_self.invoice_repository.find_by_id(item_id)
   end
 
 

@@ -1,43 +1,41 @@
 require 'csv'
 require_relative 'sales_engine'
-require_relative 'invoices_parser'
-class InvoicesRepo
+require_relative 'invoice_parser'
+class InvoiceRepo
 
   attr_reader :data, :filename, :se_self
 
   def initialize(filename, se_self)
     @se_self = se_self
     @filename = filename
-    @data = invoices_parser.parse
+    @data = invoice_parser.parse
   end
 
-  def invoices_parser
-    @invoices_parser ||= InvoicesParser.new(filename, self)
+  def invoice_parser
+    @invoice_parser ||= InvoiceParser.new(filename, self)
   end
 
   def find_transactions(invoice_id)
-    se_self.transactions_repository.find_all_by_invoice_id(invoice_id)
+    se_self.transaction_repository.find_all_by_invoice_id(invoice_id)
   end
 
   def find_invoice_items(invoice_id)
-    se_self.invoice_items_repository.find_all_by_invoice_id(invoice_id)
+    se_self.invoice_item_repository.find_all_by_invoice_id(invoice_id)
   end
 
   def find_items(invoice_id)
-    invoice_items = se_self.invoice_items_repository.find_all_by_invoice_id(invoice_id)
-    #returns array of invoice items
-    #goal is return an array of items
+    invoice_items = se_self.invoice_item_repository.find_all_by_invoice_id(invoice_id)
     invoice_items.map do |invoice_item|
-      invoice_item.item_id
+      invoice_item.item 
     end
   end
 
   def find_customer(invoice_id)
-    se_self.customers_repository.find_all_by_id(invoice_id)
+    se_self.customer_repository.find_by_id(invoice_id)
   end
 
   def find_merchant(invoice_id)
-    se_self.merchants_repository.find_all_by_id(invoice_id)
+    se_self.merchant_repository.find_all_by_id(invoice_id)
   end
 
   def all

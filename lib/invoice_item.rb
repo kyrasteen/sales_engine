@@ -1,4 +1,4 @@
-class InvoiceItems
+class InvoiceItem
 
   attr_reader :id, :created_at, :updated_at, :item_id, :invoice_id, :quantity, :unit_price, :invoice_items_repo_self
 
@@ -18,7 +18,7 @@ class InvoiceItems
   end
 
   def item
-    @invoice_items_repo_self.find_item(id)
+    @invoice_items_repo_self.find_item(item_id)
   end
 
   def total_price

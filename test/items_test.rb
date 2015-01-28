@@ -7,7 +7,7 @@ class ItemsTest < Minitest::Test
 
   def setup
     engine = SalesEngine.new
-    @item = engine.items_repository('test/support/items_test_data.csv').data[0]
+    @item = engine.item_repository('test/support/items_test_data.csv').data[0]
   end
 
   def test_it_stores_an_id

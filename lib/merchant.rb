@@ -1,4 +1,4 @@
-class Merchants
+class Merchant
 
   attr_reader :id, :name, :created_at, :updated_at, :mr_self
 
@@ -15,7 +15,7 @@ class Merchants
   end
 
   def invoices
-    mr_self.find_invoices(id.to_s)
+    mr_self.find_invoices(id)
   end
 
   def successful_invoices
@@ -34,18 +34,17 @@ class Merchants
   end
 
   def favorite_customer
-    #find invoices with successful transaction
-    #for each invoice find customer
-    found_customers = successful_invoices.map do |invoice|
-      invoice.customer
-    end
-    found_customers.
-    #group invoices by customer
-    #find largest group and return corresponding customer object
-    # found_customers = successful_invoices.group_by { |invoice| invoice.customer[0] }
-    # #only returning one invoice per customer!!!!!
-    # found_customers.max_by { |customer, found_invoices| found_invoices.length }
-    # require 'pry'; binding.pry
+
   end
+
+  def customers_with_pending_invoices
+    #find all invoices for the merchant
+    #delete all invoices from collection that had successful transactions
+    #for each pending invoice, find its customer and return
+    pending_invoices = invoices - successful_invoices
+    pending_invoices.map { |invoice| invoice.customer }
+  end
+
+  #customers_with_pending_invoices returns a collection of Customer instances which have pending (unpaid) invoices. An invoice is considered pending if none of it’s transactions are successful.
 
 end

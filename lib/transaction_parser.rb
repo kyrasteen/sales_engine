@@ -1,7 +1,7 @@
 require 'csv'
-require_relative 'transactions'
+require_relative 'transaction'
 
-class TransactionsParser
+class TransactionParser
   attr_reader :filename, :tr_self
 
   def initialize(filename, tr_self)
@@ -12,7 +12,7 @@ class TransactionsParser
   def parse
     file = CSV.open(filename, :headers => true, :header_converters => :symbol)
     @transactions = file.map do |line|
-      Transactions.new(line, tr_self)
+      Transaction.new(line, tr_self)
     end
   end
 end

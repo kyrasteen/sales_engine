@@ -1,12 +1,12 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require_relative '../lib/merchants_repo'
+require_relative '../lib/merchant_repository'
 
-class MerchantsRepoTest < Minitest::Test
+class MerchantRepoTest < Minitest::Test
 
   def setup
     filename = './test/support/merchants_test_data.csv'
-    @merch = MerchantsRepo.new(filename, nil)
+    @merch = MerchantRepo.new(filename, nil)
   end
 
   def test_it_finds_all

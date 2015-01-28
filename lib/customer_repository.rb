@@ -1,7 +1,7 @@
 require 'csv'
-require_relative 'customers_parser'
+require_relative 'customer_parser'
 
-class CustomersRepo
+class CustomerRepo
 
   attr_reader :data, :filename, :se_self
 
@@ -12,7 +12,7 @@ class CustomersRepo
   end
 
   def customers_parser
-    @customers_parser ||= CustomersParser.new(filename, self)
+    @customers_parser ||= CustomerParser.new(filename, self)
   end
 
   def all
@@ -20,7 +20,7 @@ class CustomersRepo
   end
 
   def find_random
-    rand(0..data.length)
+    data.sample
   end
 
   def random
@@ -68,7 +68,7 @@ class CustomersRepo
   end
 
   def find_invoices(customer_id)
-    se_self.invoices_repository.find_all_by_customer_id(customer_id)
+    se_self.invoice_repository.find_all_by_customer_id(customer_id)
   end
 
   private

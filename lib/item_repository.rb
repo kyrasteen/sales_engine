@@ -1,5 +1,5 @@
 require 'csv'
-require_relative 'items_parser'
+require_relative 'item_parser'
 
 class ItemsRepo
 
@@ -12,13 +12,12 @@ class ItemsRepo
   end
 
   def items_parser
-    @items_parser ||= ItemsParser.new(filename, self)
+    @items_parser ||= ItemParser.new(filename, self)
   end
 
   def find_successful_transactions_for_item
     data.collect do |item|
       found_invoice_items = item.invoice_items
-                require 'pry'; binding.pry
       found_invoice_items.collect do |invoice_item|
         found_invoices = invoice_item.invoice
           found_invoices.select do |invoice|
@@ -118,11 +117,11 @@ class ItemsRepo
   end
 
   def find_invoice_items(id)
-    se_self.invoice_items_repository.find_all_by_item_id(id)
+    se_self.invoice_item_repository.find_all_by_item_id(id)
   end
 
   def find_merchant(merchant_id)
-    se_self.merchants_repository.find_all_by_id(merchant_id)
+    se_self.merchant_repository.find_by_id(merchant_id)
   end
 
   private

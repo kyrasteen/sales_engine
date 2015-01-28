@@ -2,11 +2,11 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require_relative '../lib/sales_engine'
 
-class InvoicesTest < Minitest::Test
+class InvoiceTest < Minitest::Test
 
   def setup
     engine = SalesEngine.new
-    @invoices_se_repo = engine.invoices_repository('test/support/invoices_test_data.csv').data[0]
+    @invoices_se_repo = engine.invoice_repository('test/support/invoices_test_data.csv').data[0]
   end
 
   def test_it_stores_an_id
@@ -34,7 +34,7 @@ class InvoicesTest < Minitest::Test
 
   def test_it_finds_related_customers
     assert @invoices_se_repo.customer
-    assert_equal 1, @invoices_se_repo.customer.length
+    assert_equal "Joey", @invoices_se_repo.customer.first_name
   end
 
   def test_it_finds_related_merchants
