@@ -3,8 +3,8 @@ class Invoice
 
   def initialize(line, invoice_repo_self)
     @id = line[:id].to_i
-    @customer_id = line[:customer_id]
-    @merchant_id = line[:merchant_id]
+    @customer_id = line[:customer_id].to_i
+    @merchant_id = line[:merchant_id].to_i
     @status = line[:status]
     @created_at = line[:created_at]
     @updated_at = line[:updated_at]
@@ -24,11 +24,11 @@ class Invoice
   end
 
   def customer
-    invoice_repo_self.find_customer(id)
+    invoice_repo_self.find_customer(customer_id)
   end
 
   def merchant
-    invoice_repo_self.find_merchant(id)
+    invoice_repo_self.find_merchant(merchant_id)
   end
 
   def total_amount_billed

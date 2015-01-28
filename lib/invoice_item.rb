@@ -18,7 +18,7 @@ class InvoiceItem
   end
 
   def item
-    @invoice_items_repo_self.find_item(id)
+    @invoice_items_repo_self.find_item(item_id)
   end
 
   def total_price
