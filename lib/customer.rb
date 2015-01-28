@@ -3,7 +3,7 @@ class Customer
     :created_at, :updated_at, :cr_self
 
   def initialize(data, cr_self)
-    @id = data[:id].to_i
+    @id = data[:id]
     @first_name = data[:first_name]
     @last_name  = data[:last_name]
     @created_at = data[:created_at]
@@ -12,7 +12,7 @@ class Customer
   end
 
   def invoices
-    cr_self.find_invoices(id.to_s)
+    cr_self.find_invoices(id)
   end
 
   def transactions
