@@ -11,10 +11,10 @@ class InvoiceParserTest < Minitest::Test
 
     first = invoices.first
     assert_equal 1, first.id
-    assert_equal "1", first.customer_id
+    assert_equal 1, first.customer_id
 
     second = invoices[1]
     assert_equal 2, second.id
-    assert_equal "1", second.customer_id
+    assert_equal 1, second.customer_id
   end
 end

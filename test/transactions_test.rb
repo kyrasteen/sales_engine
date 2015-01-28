@@ -22,7 +22,7 @@ class TransactionTest < Minitest::Test
 
   def test_it_finds_related_invoices
     assert @transaction.invoice
-    assert_equal '1', @transaction.invoice.id
+    assert_equal 1, @transaction.invoice.id
   end
 
 end

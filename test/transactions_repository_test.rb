@@ -39,7 +39,7 @@ class TransactionRepoTest < Minitest::Test
   end
 
   def test_it_can_find_invoice_id
-    assert_equal 3, @transactions.find_all_by_invoice_id('12').count
+    assert_equal 3, @transactions.find_all_by_invoice_id(12).count
   end
 
   def test_it_can_find_a_credit_card_number

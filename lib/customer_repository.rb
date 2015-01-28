@@ -20,7 +20,7 @@ class CustomerRepo
   end
 
   def find_random
-    data.sample
+    rand(0..data.length)
   end
 
   def random
