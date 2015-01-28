@@ -87,7 +87,7 @@ class InvoiceRepo
   end
 
   def find_all_by_merchant_id(merchant_id)
-    find_all_by_attribute(:merchant_id,merchant_id)
+    find_all_by_attribute(:merchant_id, merchant_id)
   end
 
   def find_by_status(status)
