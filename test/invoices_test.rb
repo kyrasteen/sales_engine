@@ -34,7 +34,7 @@ class InvoiceTest < Minitest::Test
 
   def test_it_finds_related_customers
     assert @invoices_se_repo.customer
-    assert_equal 1, @invoices_se_repo.customer.length
+    assert_equal "Joey", @invoices_se_repo.customer.first_name
   end
 
   def test_it_finds_related_merchants

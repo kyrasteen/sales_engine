@@ -25,10 +25,8 @@ class InvoiceRepo
 
   def find_items(invoice_id)
     invoice_items = se_self.invoice_item_repository.find_all_by_invoice_id(invoice_id)
-    #returns array of invoice items
-    #goal is return an array of items
     invoice_items.map do |invoice_item|
-      invoice_item.item_id #need to return item object instead of item id
+      invoice_item.item 
     end
   end
 
