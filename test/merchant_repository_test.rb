@@ -45,4 +45,9 @@ class MerchantRepoTest < Minitest::Test
     assert_equal 2, @merch.find_all_by_name('Williamson Group').count
   end
 
+  def test_it_finds_most_revenue_x
+    assert_equal 3, @merch.most_revenue(3).length
+
+  end
+
 end

@@ -68,6 +68,16 @@ class MerchantRepo
     se_self.invoice_repository.find_all_by_merchant_id(merchant_id)
   end
 
+  def most_revenue(number)
+    # most_revenue(x) returns the top x merchant instances ranked by total revenue
+    #for each merchant find total revenue
+    #sort merchants by revenue
+    #reverse
+    #take top x
+    data.sort_by { ||}
+  end
+
+
 private
 
   def find_by_attribute(attribute,criteria)
