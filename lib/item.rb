@@ -19,7 +19,7 @@ class Item
 
   def invoice_items
     ir_self.find_invoice_items(id)
-  
+
   end
 
   def merchant
@@ -63,7 +63,7 @@ class Item
         item_sales_by_day[date] = invoice_items.reduce(0) do |sum, invoice_item|
           sum + invoice_item.quantity.to_i
         end
-      
+
         item_sales_by_day
       end
 
@@ -71,9 +71,7 @@ class Item
       item_sales_by_day.sort do |a, b|
         b[1] <=> a[1]
       end
-
-    date = Date.parse(sorted_item_sales[0][0])
-    date.strftime('%a, %d %b %Y')
+    sorted_item_sales[0][0]
   end
 
 end

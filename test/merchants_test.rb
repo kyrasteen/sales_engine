@@ -34,11 +34,11 @@ class MerchantTest < Minitest::Test
 
   def test_it_finds_total_revenue_across_all_transactions
     assert @merchant.revenue
-    assert_equal 52877464, @merchant.revenue
+    assert @merchant.revenue.is_a?(BigDecimal)
   end
 
   def test_it_finds_total_revenue_for_given_date
-    assert_equal 2464143, @merchant.revenue(Date.parse("2012-03-25 13:54:11 UTC"))
+    assert @merchant.revenue(Date.parse("2012-03-25 13:54:11 UTC")).is_a?(BigDecimal)
   end
 
   def test_it_finds_favorite_customer

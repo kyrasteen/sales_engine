@@ -1,5 +1,6 @@
 require 'csv'
 require_relative 'item_parser'
+require_relative 'sales_engine'
 
 class ItemsRepo
 
@@ -32,6 +33,9 @@ class ItemsRepo
 
 
   def most_revenue(top_num)
+
+    # most_items(x) returns the top x item instances ranked by total number sold
+    
     find_successful_transactions_for_item
     #iterating over successful transactions
     #invoice items: revenue = qty * unit_price

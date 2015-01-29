@@ -22,19 +22,22 @@ class ItemsRepoTest < Minitest::Test
   end
 
   def test_it_can_find_by_created_at
-    assert_equal "2012-03-27 14:53:59 UTC", @items.find_by_created_at('2012-03-27 14:53:59 UTC').created_at
+    date = Date.parse('2012-03-27 14:53:59 UTC')
+    assert_equal Date.parse("2012-03-27 14:53:59 UTC"), @items.find_by_created_at(date).created_at
   end
 
   def test_it_can_find_all_by_created_at
-    assert_equal 20, @items.find_all_by_created_at('2012-03-27 14:53:59 UTC').count
+    assert_equal 20, @items.find_all_by_created_at(Date.parse('2012-03-27 14:53:59 UTC')).count
   end
 
   def test_it_can_find_by_updated_at
-    assert_equal "2012-03-27 14:53:59 UTC", @items.find_by_updated_at('2012-03-27 14:53:59 UTC').updated_at
+    date = Date.parse('2012-03-27 14:53:59 UTC')
+    assert_equal Date.parse("2012-03-27 14:53:59 UTC"), @items.find_by_updated_at(date).updated_at
   end
 
   def test_it_can_find_all_by_updated_at
-    assert_equal 20, @items.find_all_by_updated_at('2012-03-27 14:53:59 UTC').count
+    date = Date.parse('2012-03-27 14:53:59 UTC')
+    assert_equal 20, @items.find_all_by_updated_at(date).count
   end
 
   def test_it_can_find_by_name
@@ -51,15 +54,15 @@ class ItemsRepoTest < Minitest::Test
   end
 
   def test_it_can_find_by_unit_price
-    assert_equal "75107", @items.find_by_unit_price(BigDecimal('75107')).unit_price
+    assert_equal BigDecimal("75107"), @items.find_by_unit_price(BigDecimal('75107')).unit_price
   end
 
   def test_can_find_by_merchant_id
-    assert_equal "2", @items.find_by_merchant_id(2).merchant_id
+    assert_equal "2", @items.find_by_merchant_id('2').merchant_id
   end
 
   def test_it_can_find_top_two_ranked_items_by_revenue
-  
+
     assert_equal [],  @items.most_revenue(2)
   end
 
