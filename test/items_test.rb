@@ -38,7 +38,7 @@ class ItemsTest < Minitest::Test
 
   def test_it_finds_best_day
     assert @item.best_day
-    assert_equal "Tue, 27 Mar 2012", @item.best_day
+    assert_equal Date.parse("Tue, 10 Mar 2012"), @item.best_day
   end
 
 end

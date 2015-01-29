@@ -59,7 +59,7 @@ class MerchantRepoTest < Minitest::Test
   end
 
   def test_it_finds_revenue
-    assert_equal 100, @merch.revenue(Date.parse('2012-03-27 14:54:00 UTC'))
+    assert @merch.revenue(Date.parse('2012-03-27 14:54:00 UTC')).is_a?(BigDecimal)
   end
 
 end

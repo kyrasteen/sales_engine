@@ -1,7 +1,7 @@
 require 'csv'
-require_relative 'sales_engine'
 require_relative 'merchant_parser'
 require 'bigdecimal'
+require_relative 'sales_engine'
 
 class MerchantRepo
 
