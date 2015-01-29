@@ -30,9 +30,6 @@ class ItemsRepo
     end
   end
 
-  def find_all_in
-  end
-
 
   def most_revenue(top_num)
     find_successful_transactions_for_item

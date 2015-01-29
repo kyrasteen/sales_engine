@@ -24,7 +24,7 @@ class ItemsTest < Minitest::Test
 
   def test_it_has_other_attributes
     assert @item.description.is_a?(String)
-    assert_equal "75107", @item.unit_price
+    assert_equal BigDecimal.new("75107"), @item.unit_price
     assert_equal "1", @item.merchant_id
   end
 
