@@ -31,23 +31,26 @@ class ItemsRepo
     end
   end
 
-
-  def most_revenue(top_num)
-
-    # most_items(x) returns the top x item instances ranked by total number sold
-    
-    find_successful_transactions_for_item
-    #iterating over successful transactions
-    #invoice items: revenue = qty * unit_price
-    #calc revenue
-    #return top 2 items by revenue
-
+  def successful_items
+    all.select do |item|
+      item.invoice_items.each do |ii|
+        ii.invoice.successful_transaction?
+      end
+    end
   end
 
-    #each item find your invoice_items
-    #for each invoice_item, find your one invoice
-    #for each invoice find all of your successful transactions
-    #if no successful transaction, don't do the math
+  def find_revenues
+    successful_items.sort_by do |item|
+      item.invoice_items.reduce(0) do |revenue, ii|
+        revenue + ii.total_price
+      end
+    end
+  end
+
+
+  def most_revenue(top_num)
+    find_revenues.reverse.take(top_num)
+  end
 
   def all
     data
