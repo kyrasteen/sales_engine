@@ -83,12 +83,9 @@ class MerchantRepo
   end
 
   def revenue(date)
-    #for each merchant find their revenue and pass in date
-    #reduce revenues
     result = data.reduce(0) { |total, merchant| total + merchant.revenue(date) }
     BigDecimal(result)
   end
-
 
 private
 
