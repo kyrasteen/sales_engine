@@ -10,7 +10,7 @@ class Item
     @created_at = line[:created_at]
     @updated_at = line[:updated_at]
     @description = line[:description]
-    @unit_price = BigDecimal(line[:unit_price].to_i).round(2)
+    @unit_price = BigDecimal(line[:unit_price].to_i) / 100
     @merchant_id = line[:merchant_id]
     @ir_self = ir_self
     @created_at = Date.parse(line[:created_at])
