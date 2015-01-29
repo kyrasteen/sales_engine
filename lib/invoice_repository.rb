@@ -15,6 +15,11 @@ class InvoiceRepo
     @invoice_parser ||= InvoiceParser.new(filename, self)
   end
 
+  # create an invoice based on args
+  # for each item, create an invoice item
+  def create(args = {})
+  end
+
   def find_transactions(invoice_id)
     se_self.transaction_repository.find_all_by_invoice_id(invoice_id)
   end

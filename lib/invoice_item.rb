@@ -1,4 +1,5 @@
 require 'bigdecimal'
+require 'date'
 
 class InvoiceItem
 
@@ -8,8 +9,8 @@ class InvoiceItem
     @id = line[:id].to_i
     @invoice_id = line[:invoice_id].to_i
     @item_id = line[:item_id].to_i
-    @created_at = line[:created_at]
-    @updated_at = line[:updated_at]
+    @created_at = Date.parse(line[:created_at])
+    @updated_at = Date.parse(line[:updated_at])
     @quantity = line[:quantity]
     @unit_price = BigDecimal(line[:unit_price].to_i).round(2)
     @invoice_items_repo_self = invoice_items_repo_self

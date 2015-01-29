@@ -30,19 +30,23 @@ class InvoiceItemRepoTest < Minitest::Test
   end
 
   def test_it_can_find_by_created_at
-    assert_equal "2012-03-27 14:54:09 UTC", @invoice_items.find_by_created_at('2012-03-27 14:54:09 UTC').created_at
+    date = Date.parse('2012-03-27 14:54:09 UTC')
+    assert @invoice_items.find_by_created_at(date).is_a?(InvoiceItem)
   end
 
   def test_it_can_find_all_by_created_at
-    assert_equal 15, @invoice_items.find_all_by_created_at('2012-03-27 14:54:09 UTC').count
+    date = Date.parse('2012-03-27 14:54:09 UTC')
+    assert_equal 19, @invoice_items.find_all_by_created_at(date).count
   end
 
   def test_it_can_find_by_updated_at
-    assert_equal "2012-03-27 14:54:09 UTC", @invoice_items.find_by_updated_at('2012-03-27 14:54:09 UTC').updated_at
+    date = Date.parse('2012-03-27 14:54:09 UTC')
+    assert @invoice_items.find_by_updated_at(date).is_a?(InvoiceItem)
   end
 
   def test_it_can_find_all_by_updated_at
-    assert_equal 15, @invoice_items.find_all_by_updated_at('2012-03-27 14:54:09 UTC').count
+    date = Date.parse('2012-03-27 14:54:09 UTC')
+    assert_equal 19, @invoice_items.find_all_by_updated_at(date).count
   end
 
   def test_it_can_find_by_quantity
@@ -50,7 +54,7 @@ class InvoiceItemRepoTest < Minitest::Test
   end
 
   def test_it_can_find_by_all_by_unit_price
-    assert_equal 2, @invoice_items.find_all_by_unit_price(72018).count
+    assert_equal 2, @invoice_items.find_all_by_unit_price(BigDecimal('72018')).count
   end
 
 end

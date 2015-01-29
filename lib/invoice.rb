@@ -1,3 +1,5 @@
+require 'date'
+
 class Invoice
   attr_reader :id, :customer_id, :merchant_id, :status, :created_at, :updated_at, :invoice_repo_self
 
@@ -6,8 +8,8 @@ class Invoice
     @customer_id = line[:customer_id].to_i
     @merchant_id = line[:merchant_id].to_i
     @status = line[:status]
-    @created_at = line[:created_at]
-    @updated_at = line[:updated_at]
+    @created_at = Date.parse(line[:created_at])
+    @updated_at = Date.parse(line[:updated_at])
     @invoice_repo_self = invoice_repo_self
   end
 

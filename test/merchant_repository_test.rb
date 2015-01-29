@@ -6,7 +6,8 @@ class MerchantRepoTest < Minitest::Test
 
   def setup
     filename = './test/support/merchants_test_data.csv'
-    @merch = MerchantRepo.new(filename, nil)
+    se_self = SalesEngine.new
+    @merch = MerchantRepo.new(filename, se_self)
   end
 
   def test_it_finds_all
@@ -22,19 +23,23 @@ class MerchantRepoTest < Minitest::Test
   end
 
   def test_it_can_find_by_created_at
-    assert_equal "2012-03-27 14:54:00 UTC", @merch.find_by_created_at('2012-03-27 14:54:00 UTC').created_at
+    date = Date.parse('2012-03-27 14:54:00 UTC')
+    assert @merch.find_by_created_at(date).is_a?(Merchant)
   end
 
   def test_it_can_find_all_by_created_at
-    assert_equal 9, @merch.find_all_by_created_at('2012-03-27 14:53:59 UTC').count
+    date = Date.parse('2012-03-27 14:53:59 UTC')
+    assert_equal 19, @merch.find_all_by_created_at(date).count
   end
 
   def test_it_can_find_by_updated_at
-    assert_equal "2012-03-27 14:54:00 UTC", @merch.find_by_updated_at('2012-03-27 14:54:00 UTC').updated_at
+    date = Date.parse('2012-03-27 14:54:00 UTC')
+    assert @merch.find_by_updated_at(date).is_a?(Merchant)
   end
 
   def test_it_can_find_all_by_updated_at
-    assert_equal 10, @merch.find_all_by_updated_at('2012-03-27 14:54:00 UTC').count
+    date = Date.parse('2012-03-27 14:54:00 UTC')
+    assert_equal 19, @merch.find_all_by_updated_at(date).count
   end
 
   def test_it_can_find_by_name
@@ -46,17 +51,15 @@ class MerchantRepoTest < Minitest::Test
   end
 
   def test_it_finds_most_revenue_x
-    assert_equal 3, @merch.most_revenue(3)[0].name
+    assert_equal "Dicki-Bednar", @merch.most_revenue(3)[0].name
   end
 
   def test_it_finds_most_items_x
-    skip
-    assert_equal 3, @merch.most_items(3)[0].name
+    assert_equal "Kozey Group", @merch.most_items(3)[0].name
   end
 
   def test_it_finds_revenue
-    skip
-    assert_equal 100, @merch.revenue('2012-03-27 14:54:00 UTC')
+    assert_equal 100, @merch.revenue(Date.parse('2012-03-27 14:54:00 UTC'))
   end
 
 end

@@ -2,6 +2,7 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require_relative '../lib/transaction_repository'
 require 'pry'
+require 'date'
 
 class TransactionRepoTest < Minitest::Test
 
@@ -23,19 +24,22 @@ class TransactionRepoTest < Minitest::Test
   end
 
   def test_it_can_find_by_created_at
-    assert_equal "2012-03-27 14:54:10 UTC", @transactions.find_by_created_at('2012-03-27 14:54:10 UTC').created_at
+    date = Date.parse('2012-03-27 14:54:10 UTC')
+    assert @transactions.find_by_created_at(date).is_a?(Transaction)
   end
 
   def test_it_can_find_all_by_created_at
-    assert_equal 18, @transactions.find_all_by_created_at('2012-03-27 14:54:10 UTC').count
+    date = Date.parse('2012-03-27 14:54:10 UTC')
+    assert_equal 20, @transactions.find_all_by_created_at(date).count
   end
 
   def test_it_can_find_by_updated_at
-    assert_equal "2012-03-27 14:54:10 UTC", @transactions.find_by_updated_at('2012-03-27 14:54:10 UTC').updated_at
+    assert @transactions.find_by_updated_at(Date.parse('2012-03-27 14:54:10 UTC')).is_a?(Transaction)
   end
 
   def test_it_can_find_all_by_updated_at
-    assert_equal 18, @transactions.find_all_by_updated_at('2012-03-27 14:54:10 UTC').count
+    date = Date.parse'2012-03-27 14:54:09 UTC'
+    assert_equal 20, @transactions.find_all_by_updated_at(date).count
   end
 
   def test_it_can_find_invoice_id

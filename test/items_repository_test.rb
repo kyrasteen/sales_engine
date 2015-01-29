@@ -51,11 +51,11 @@ class ItemsRepoTest < Minitest::Test
   end
 
   def test_it_can_find_by_unit_price
-    assert_equal "75107", @items.find_by_unit_price('75107').unit_price
+    assert_equal "75107", @items.find_by_unit_price(BigDecimal('75107')).unit_price
   end
 
   def test_can_find_by_merchant_id
-    assert_equal "2", @items.find_by_merchant_id('2').merchant_id
+    assert_equal "2", @items.find_by_merchant_id(2).merchant_id
   end
 
   def test_it_can_find_top_two_ranked_items_by_revenue

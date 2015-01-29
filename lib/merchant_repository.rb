@@ -1,6 +1,7 @@
 require 'csv'
 require_relative 'sales_engine'
 require_relative 'merchant_parser'
+require 'bigdecimal'
 
 class MerchantRepo
 
@@ -69,25 +70,22 @@ class MerchantRepo
   end
 
   def most_revenue(number)
-    # most_revenue(x) returns the top x merchant instances ranked by total revenue
-    #for each merchant find total revenue
-    #sort merchants by revenue
-    #reverse
-    #take top x
     found_revenues = data.sort_by { |merchant| merchant.revenue }
     found_revenues.reverse.take(number)
   end
 
   def most_items(number)
-
+    result = all.sort_by do |merchant|
+      invoices = merchant.successful_invoices
+      items_sold_for_all_invoices(invoices)
+    end
+    result.reverse.take(number)
   end
 
   def revenue(date)
-    #for each merchant find their revenue and pass in date
-    #reduce revenues
-    data.reduce(0) { |merchant| merchant.revenue(date) }
+    result = data.reduce(0) { |total, merchant| total + merchant.revenue(date) }
+    BigDecimal(result)
   end
-
 
 private
 
@@ -99,4 +97,15 @@ private
     data.find_all { |row| row.send(attribute) == criteria }
   end
 
+  def items_sold_for_invoice(invoice)
+    invoice.invoice_items.reduce(0) do |items_sold, invoice_item|
+      items_sold + invoice_item.quantity.to_i
+    end
+  end
+
+  def items_sold_for_all_invoices(invoices)
+    invoices.reduce(0) do |total_items, invoice|
+      total_items + items_sold_for_invoice(invoice)
+    end
+  end
 end
