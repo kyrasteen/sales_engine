@@ -55,8 +55,7 @@ class MerchantRepoTest < Minitest::Test
   end
 
   def test_it_finds_most_items_x
-    p @merch.most_items 3
-    # assert_equal "Dicki-Bednar", @merch.most_items(3)[0].name
+    assert_equal "Kozey Group", @merch.most_items(3)[0].name
   end
 
   def test_it_finds_revenue
