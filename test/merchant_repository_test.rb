@@ -59,8 +59,7 @@ class MerchantRepoTest < Minitest::Test
   end
 
   def test_it_finds_revenue
-    skip
-    assert_equal 100, @merch.revenue('2012-03-27 14:54:00 UTC')
+    assert_equal 100, @merch.revenue(Date.parse('2012-03-27 14:54:00 UTC'))
   end
 
 end

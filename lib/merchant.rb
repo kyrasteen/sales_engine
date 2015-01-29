@@ -30,9 +30,10 @@ class Merchant
     else
       invoice_pool = successful_invoices
     end
-    invoice_pool.reduce(0) do |revenue, invoice|
+    result = invoice_pool.reduce(0) do |revenue, invoice|
       revenue + invoice.total_amount_billed
     end
+    BigDecimal(result) / 100
   end
 
   def favorite_customer

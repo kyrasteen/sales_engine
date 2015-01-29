@@ -1,6 +1,7 @@
 require 'csv'
 require_relative 'sales_engine'
 require_relative 'merchant_parser'
+require 'bigdecimal'
 
 class MerchantRepo
 
@@ -84,7 +85,8 @@ class MerchantRepo
   def revenue(date)
     #for each merchant find their revenue and pass in date
     #reduce revenues
-    data.reduce(0) { |merchant| merchant.revenue(date) }
+    result = data.reduce(0) { |total, merchant| total + merchant.revenue(date) }
+    BigDecimal(result)
   end
 
 
