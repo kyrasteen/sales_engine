@@ -74,12 +74,11 @@ class MerchantRepo
   end
 
   def most_items(number)
-    #for each merchant object, find successful invoices
-    #for each invoice find its invoice items
-    #for each invoice item, find its quantity
-    #reduce all quantities of items for each invoice
-    #reduce quantities across all invoices
-    #select top (number) of merchants based on item count
+    result = all.sort_by do |merchant|
+      invoices = merchant.successful_invoices
+      items_sold_for_all_invoices(invoices)
+    end
+    result.reverse.take(number)
   end
 
   def revenue(date)
@@ -99,4 +98,15 @@ private
     data.find_all { |row| row.send(attribute) == criteria }
   end
 
+  def items_sold_for_invoice(invoice)
+    invoice.invoice_items.reduce(0) do |items_sold, invoice_item|
+      items_sold + invoice_item.quantity.to_i
+    end
+  end
+
+  def items_sold_for_all_invoices(invoices)
+    invoices.reduce(0) do |total_items, invoice|
+      total_items + items_sold_for_invoice(invoice)
+    end
+  end
 end
