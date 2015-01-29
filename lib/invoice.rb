@@ -22,7 +22,7 @@ class Invoice
   end
 
   def items
-    invoice_repo_self.find_items(id.to_i)
+    invoice_repo_self.find_items(id)
   end
 
   def customer
