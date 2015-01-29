@@ -1,3 +1,5 @@
+require 'date'
+
 class Merchant
 
   attr_reader :id, :name, :created_at, :updated_at, :mr_self
@@ -5,8 +7,8 @@ class Merchant
   def initialize(line, mr_self)
     @id = line[:id].to_i
     @name = line[:name]
-    @created_at = line[:created_at]
-    @updated_at = line[:updated_at]
+    @created_at = Date.parse(line[:created_at])
+    @updated_at = Date.parse(line[:updated_at])
     @mr_self = mr_self
   end
 

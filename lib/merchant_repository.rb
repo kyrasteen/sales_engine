@@ -69,17 +69,17 @@ class MerchantRepo
   end
 
   def most_revenue(number)
-    # most_revenue(x) returns the top x merchant instances ranked by total revenue
-    #for each merchant find total revenue
-    #sort merchants by revenue
-    #reverse
-    #take top x
     found_revenues = data.sort_by { |merchant| merchant.revenue }
     found_revenues.reverse.take(number)
   end
 
   def most_items(number)
-
+    #for each merchant object, find successful invoices
+    #for each invoice find its invoice items
+    #for each invoice item, find its quantity
+    #reduce all quantities of items for each invoice
+    #reduce quantities across all invoices
+    #select top (number) of merchants based on item count
   end
 
   def revenue(date)

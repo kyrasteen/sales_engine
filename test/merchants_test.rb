@@ -1,6 +1,7 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require_relative '../lib/sales_engine'
+require 'date'
 
 class MerchantTest < Minitest::Test
 
@@ -33,11 +34,11 @@ class MerchantTest < Minitest::Test
 
   def test_it_finds_total_revenue_across_all_transactions
     assert @merchant.revenue
-    assert_equal 'BigDecimal', @merchant.revenue
+    assert_equal 52877464, @merchant.revenue
   end
 
   def test_it_finds_total_revenue_for_given_date
-    assert_equal 'bigDecimal', @merchant.revenue("2012-03-25 13:54:11 UTC")
+    assert_equal 2464143, @merchant.revenue(Date.parse("2012-03-25 13:54:11 UTC"))
   end
 
   def test_it_finds_favorite_customer

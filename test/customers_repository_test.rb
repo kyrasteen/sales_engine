@@ -23,19 +23,23 @@ class CustomerRepoTest < Minitest::Test
   end
 
   def test_it_can_find_by_created_at
-    assert_equal "2012-03-27 14:54:10 UTC", @customers.find_by_created_at('2012-03-27 14:54:10 UTC').created_at
+    date = Date.parse('2012-03-27 14:54:10 UTC')
+    assert @customers.find_by_created_at(date).is_a?(Customer)
   end
 
   def test_it_can_find_all_by_created_at
-    assert_equal 6, @customers.find_all_by_created_at('2012-03-27 14:54:10 UTC').count
+    date = Date.parse('2012-03-27 14:54:10 UTC')
+    assert_equal 19, @customers.find_all_by_created_at(date).count
   end
 
   def test_it_can_find_by_updated_at
-    assert_equal "2012-03-27 14:54:10 UTC", @customers.find_by_updated_at('2012-03-27 14:54:10 UTC').updated_at
+    date = Date.parse('2012-03-27 14:54:10 UTC')
+    assert @customers.find_by_updated_at(date).is_a?(Customer)
   end
 
   def test_it_can_find_all_by_updated_at
-    assert_equal 6, @customers.find_all_by_updated_at('2012-03-27 14:54:10 UTC').count
+    date = Date.parse('2012-03-27 14:54:10 UTC')
+    assert_equal 19, @customers.find_all_by_updated_at(date).count
   end
 
 end

@@ -1,6 +1,7 @@
 require 'minitest/autorun'
 require 'minitest/pride'
 require_relative '../lib/invoice_repository'
+require 'date'
 
 class InvoiceRepoTest < Minitest::Test
 
@@ -22,19 +23,19 @@ class InvoiceRepoTest < Minitest::Test
   end
 
   def test_it_can_find_by_created_at
-    assert_equal '2012-03-25 09:54:09 UTC', @invoices_repo.find_by_created_at('2012-03-25 09:54:09 UTC').created_at
+    assert @invoices_repo.find_by_created_at(Date.parse('2012-03-25 09:54:09 UTC')).is_a?(Invoice)
   end
 
   def test_it_can_find_all_by_created_at
-    assert_equal 1, @invoices_repo.find_all_by_created_at('2012-03-25 09:54:09 UTC').count
+    assert_equal 1, @invoices_repo.find_all_by_created_at(Date.parse('2012-03-25 09:54:09 UTC')).count
   end
 
   def test_it_can_find_by_updated_at
-    assert_equal "2012-03-25 09:54:09 UTC", @invoices_repo.find_by_updated_at('2012-03-25 09:54:09 UTC').updated_at
+    assert @invoices_repo.find_by_updated_at(Date.parse('2012-03-25 09:54:09 UTC')).is_a?(Invoice)
   end
 
   def test_it_can_find_all_by_updated_at
-    assert_equal 1, @invoices_repo.find_all_by_updated_at('2012-03-25 09:54:09 UTC').count
+    assert_equal 1, @invoices_repo.find_all_by_updated_at(Date.parse('2012-03-25 09:54:09 UTC')).count
   end
 
   def test_it_can_find_by_customer_id
